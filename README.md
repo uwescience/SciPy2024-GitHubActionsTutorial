@@ -42,7 +42,7 @@ Outline:
 		* caching
 		* creating GitHub artifacts
   	  	* committing to GitHub
-	        * storing to own storage
+  	  	* storing to own storage
         * they will modify the code to make their own plot which will be automatically updated
 	* they will use either matplotlib or an interactive library such as plotly
 
