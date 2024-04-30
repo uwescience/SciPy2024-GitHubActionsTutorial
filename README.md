@@ -1,4 +1,4 @@
-# Github Actions for Scientific Data Workflows.
+# Github Actions for Scientific Data Workflows
 
 Tutorial presented at [SciPy 2024 Conference](https://www.scipy2024.scipy.org/)
 
