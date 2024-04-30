@@ -21,45 +21,45 @@ Participants can make edits from the GitHub interface, but if they are willing t
 Outline:
 
 * Overview of Github Actions and Workflows and their popular uses in Python software development (examples of testing, listing, packaging)(30 min)
-* We will explain the main components of Github Actions and associated terminology
-* We will summarize their typical uses in software development 
-* We will point to popular Github Actions used in Python software development and packaging (the focus of this tutorial will not be on them but rather on scientific pipelines)
+	* We will explain the main components of Github Actions and associated terminology
+	* We will summarize their typical uses in software development 
+	* We will point to popular Github Actions used in Python software development and packaging (the focus of this tutorial will not be on them but rather on scientific pipelines)
 
 * Setting up your first workflow: a scientific Python environment (20 min)
 	* participants will update a workflow .yml file to create an environment with their favorite Python libraries
-* participants will inspect the github interface to see the workflow runs
+	* participants will inspect the github interface to see the workflow runs
 
 * Scheduled algorithm deployment to a realtime stream (30 min)
-* we will deploy a typical scientific workflow: reading data, converting to a new format, and making a visualization
-* participants will update the deployment schedule to trigger a new workflow and will monitor the progress in the GitHub interface
+	* we will deploy a typical scientific workflow: reading data, converting to a new format, and making a visualization
+	* participants will update the deployment schedule to trigger a new workflow and will monitor the progress in the GitHub interface
 
 * Break (10 min)
 
 * Exporting results (30 min)
-            * participants will learn about various ways to store the results: 
+  	* participants will learn about various ways to store the results: 
 		* caching
-* creating GitHub artifacts
-            * committing to github
-* storing to own storage
-* they will modify the code to make their own plot which will be automatically updated
+		* creating GitHub artifacts
+                * committing to github
+	        * storing to own storage
+        * they will modify the code to make their own plot which will be automatically updated
 	* they will use either matplotlib or an interactive library such as plotly
 
 * Update results on a webpage (30 min)
 	* we will overview different ways to display scientific results on a webpage
-* we will demonstrate the workflow to deploy the webpage 
-* participants will rerender the webpage based on the updates in GitHub
+	* we will demonstrate the workflow to deploy the webpage 
+	* participants will rerender the webpage based on the updates in GitHub
 
 * Large-scale data processing (30 min)
-* we will demonstrate a use-case of processing large data sets with Github Actions
-* participants will fiddle with problem size to understand the power and limits of the computational infrastructure
-* we will discuss connections to cluster/cloud computing
+	* we will demonstrate a use-case of processing large data sets with Github Actions
+	* participants will fiddle with problem size to understand the power and limits of the computational infrastructure
+	* we will discuss connections to cluster/cloud computing
 
 * Break (10 min)
 
 * Model Versioning and Comparison (30 min) 
-* we will introduce how to leverage GitHub’s version control to version different models and performance
-* participants can contribute a new model and check its performance
-* we will discuss how this can be used as a community network to share methods and results
+	* we will introduce how to leverage GitHub’s version control to version different models and performance
+	* participants can contribute a new model and check its performance
+	* we will discuss how this can be used as a community network to share methods and results
 
 * Recap and Discussion (or buffer time)  (20 min)
 	* we will have a discussion on potential uses of Github Actions within the work of the participants
