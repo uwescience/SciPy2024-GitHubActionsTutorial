@@ -44,7 +44,7 @@ Outline:
   	  	* committing to GitHub
   	  	* storing to own storage
         * they will modify the code to make their own plot which will be automatically updated
-	* they will use either matplotlib or an interactive library such as plotly
+  	* they will use either matplotlib or an interactive library such as plotly
 
 * Update results on a webpage (30 min)
 	* we will overview different ways to display scientific results on a webpage
