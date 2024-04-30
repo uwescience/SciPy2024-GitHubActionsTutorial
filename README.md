@@ -2,9 +2,11 @@
 
 Tutorial presented at [SciPy 2024 Conference](https://www.scipy2024.scipy.org/)
 
+Authors: Valentina Staneva, Quinn Brencher, Scott Henderson
+
 ## Abstract
 
-In this tutorial we will introduce Github Actions to scientists as a tool for lightweight automation of scientific data workflows. We will demonstrate that GitHub Actions are not just a tool for software testing, but can be used in various ways to improve the reproducibility and impact of scientific analysis. Through a sequence of examples, we will demonstrate some of Github Actions' applications to scientific workflows, such as scheduled deployment of algorithms to sensor streams, updating visualizations based on new data, processing large datasets, model versioning and performance benchmarking. GitHub Actions can particularly empower Python scientific programmers who are not willing to build fully-fledged applications or set up complex computational infrastructure, but would like to increase the impact of their work. The goal is that participants will leave with their own ideas of how to integrate Github Actions in their own work. 
+In this tutorial we will introduce GitHub Actions to scientists as a tool for lightweight automation of scientific data workflows. We will demonstrate that GitHub Actions are not just a tool for software testing, but can be used in various ways to improve the reproducibility and impact of scientific analysis. Through a sequence of examples, we will demonstrate some of Github Actions' applications to scientific workflows, such as scheduled deployment of algorithms to sensor streams, updating visualizations based on new data, processing large datasets, model versioning and performance benchmarking. GitHub Actions can particularly empower Python scientific programmers who are not willing to build fully-fledged applications or set up complex computational infrastructure, but would like to increase the impact of their work. The goal is that participants will leave with their own ideas of how to integrate Github Actions in their own work. 
 
 ## Description:
 
@@ -20,13 +22,13 @@ Participants can make edits from the GitHub interface, but if they are willing t
 
 Outline:
 
-* Overview of Github Actions and Workflows and their popular uses in Python software development (examples of testing, listing, packaging)(30 min)
-	* We will explain the main components of Github Actions and associated terminology
+* Overview of GitHub Actions and Workflows and their popular uses in Python software development (examples of testing, listing, packaging)(30 min)
+	* We will explain the main components of GitHub Actions and associated terminology
 	* We will summarize their typical uses in software development 
-	* We will point to popular Github Actions used in Python software development and packaging (the focus of this tutorial will not be on them but rather on scientific pipelines)
+	* We will point to popular GitHub Actions used in Python software development and packaging (the focus of this tutorial will not be on them but rather on scientific pipelines)
 
 * Setting up your first workflow: a scientific Python environment (20 min)
-	* participants will update a workflow .yml file to create an environment with their favorite Python libraries
+	* participants will update a workflow `.yml` file to create an environment with their favorite Python libraries
 	* participants will inspect the github interface to see the workflow runs
 
 * Scheduled algorithm deployment to a realtime stream (30 min)
@@ -64,5 +66,7 @@ Outline:
 * Recap and Discussion (or buffer time)  (20 min)
 	* we will have a discussion on potential uses of Github Actions within the work of the participants
 
-
-
+# References
+* [*GitHub Actions for Scientific Data Workflows*](https://github.com/valentina-s/GithubActionsTutorial-USRSE23), Valentina Staneva, [US-RSE 2023 Tutorial](https://us-rse.org/usrse23/program/tutorials/) 
+* [*Characterizing glacial lake outburst flood hazard at regional scale using fused InSAR-speckle tracking surface displacement time series*](https://escience.washington.edu/2024-incubator-projects/), Quinn Brencher and Scott Henderson, eScience Institute Data Incubator Project, 2024, [[repo](https://github.com/relativeorbit/actions-batch-demo)]
+* [*GitHub Actions Workflows for Scheduled Algorithm Deployment*], Dmitry Volodin, Jesse Lopez, Scott Veirs, Val Veirs, Valentina Staneva, Orcasound Google Summer Of Code 2021 Project, [[repo]](https://github.com/orcasound/orca-action-workflow)
