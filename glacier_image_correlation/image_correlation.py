@@ -37,9 +37,7 @@ def download_s2(img1_date, img2_date, bbox):
     search = catalog.search(
     collections=["sentinel-2-l2a"],
     intersects=bbox,
-    datetime=img1_date,
-    query={"eo:cloud_cover": {"lt": 10}}, # less than 10% cloud cover
-    )
+    datetime=img1_date)
     
     img1_items = search.item_collection()
     img1_full = stackstac.stack(img1_items)
@@ -47,9 +45,7 @@ def download_s2(img1_date, img2_date, bbox):
     search = catalog.search(
     collections=["sentinel-2-l2a"],
     intersects=bbox,
-    datetime=img2_date,
-    query={"eo:cloud_cover": {"lt": 10}}, # less than 10% cloud cover
-    )
+    datetime=img2_date)
 
     # Check how many items were returned
     img2_items = search.item_collection()
