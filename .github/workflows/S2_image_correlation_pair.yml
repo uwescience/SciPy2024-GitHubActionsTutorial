@@ -54,6 +54,11 @@ jobs:
                 environment-file: glacier_image_correlation/environment.yml
                 environment-name: image-correlation
 
+            - name: modify autoRIFT package
+              run: |
+                git clone https://github.com/gbrencher/autoRIFT.git
+                cp -f autoRIFT/geo_autoRIFT/autoRIFT/autoRIFT.py /home/runner/micromamba/envs/image-correlation/lib/python3.12/site-packages/autoRIFT/
+                
             - name: download data and run autoRIFT software
               run: |
                 python glacier_image_correlation/image_correlation.py \
