@@ -1,5 +1,5 @@
 # Batch process many image pairs
-name: Batch
+name: batch_image_correlation
 run-name: batch image correlation ${{ inputs.npairs }} connections
 
 on:
@@ -124,7 +124,7 @@ jobs:
                 shortname = f'{img1_date}_{img2_date}'
                 pairs.append({'img1_date': img1_date, 'img2_date': img2_date, 'name':shortname})
           matrixJSON = f'{{"include":{json.dumps(pairs)}}}'
-          print(f'Number of Interferograms: {len(pairs)}')
+          print(f'number of image pairs: {len(pairs)}')
           
           with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
               print(f'BURST_IDS={image_dates}', file=f)
