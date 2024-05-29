@@ -70,4 +70,4 @@ jobs:
               with:
                 name: ${{ inputs.workflow_name }}
                 path: |
-                    glacier_image_correlation/glacier_velocity/S2*.tif
+                    S2*horizontal_velocity.tif
