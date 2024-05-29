@@ -1,0 +1,68 @@
+# Process a single image pair
+name: Single
+run-name: ${{ inputs.workflow_name }}
+
+# Set workflow input parameters and defaults
+on:
+  workflow_dispatch:
+    inputs:
+        img1_date:
+            type: string
+            required: true
+            description: S2 image 1 date
+            default: 2022-06-24
+        img2_date:
+            type: string
+            required: true
+            description: S2 image 2 date
+            default: 2022-09-27
+        workflow_name:
+            description: 'Custom workflow name'
+            required: false
+            default: 'autoRIFT'
+            type: string
+
+  # Must duplicate inputs for workflow_call (https://github.com/orgs/community/discussions/39357)
+  workflow_call:
+    inputs:
+        img1_date:
+            type: string
+            description: S2 image 1 date
+        img2_date:
+            type: string
+            description: S2 image 2 date
+        workflow_name:
+            description: 'Custom workflow name'
+            type: string
+
+jobs:
+    autoRIFT:
+        name: ${{ inputs.workflow_name }}
+        runs-on: ubuntu-latest
+        defaults:
+            run:
+                shell: bash -el {0}
+
+        steps:
+            - name: Checkout Repository
+              uses: actions/checkout@v4
+
+            - name: Install Conda environment with Micromamba
+              uses: mamba-org/setup-micromamba@v1
+              with:
+                cache-environment: true
+                environment-file: glacier_image_correlation/environment.yml
+                environment-name: image-correlation
+
+            - name: download data and run autoRIFT software
+              run: |
+                python glacier_image_correlation/image_correlation.py \
+                    ${{ inputs.img1_date }} \
+                    ${{ inputs.img2_date }}
+
+            - name: Upload velocity 
+              uses: actions/upload-artifact@v4
+              with:
+                name: ${{ inputs.workflow_name }}
+                path: |
+                    glacier_image_correlation/glacier_velocity/S2*.tif
