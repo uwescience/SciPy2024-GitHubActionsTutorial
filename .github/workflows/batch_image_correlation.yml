@@ -6,9 +6,9 @@ on:
   workflow_dispatch:
     inputs:
         cloud_cover:
-            type: choice
+            type: string
             required: true
-            description: percent cloud cover allowed in images
+            description: percent cloud cover allowed in images (0-100)
             default: '10'
         start_month:
             type: choice
@@ -50,8 +50,8 @@ jobs:
   S2_search:
     runs-on: ubuntu-latest
     outputs:
-      BURST_IDS: ${{ steps.asf-search.outputs.BURST_IDS }}
-      MATRIX: ${{ steps.asf-search.outputs.MATRIX_PARAMS_COMBINATIONS }}
+      BURST_IDS: ${{ steps.S2_search.outputs.IMAGE_DATES }}
+      MATRIX: ${{ steps.S2_search.outputs.MATRIX_PARAMS_COMBINATIONS }}
     defaults:
       run:
         shell: bash -el {0}
@@ -95,21 +95,23 @@ jobs:
           [75.42382800808971,36.41082887114753]]]
           }
 
-          # We use the api from element84 to query the data
+          # Use the api from element84 to query the data
           URL = "https://earth-search.aws.element84.com/v1"
           catalog = pystac_client.Client.open(URL)
 
           search = catalog.search(
           collections=["sentinel-2-l2a"],
           intersects=bbox,
-          query={"eo:cloud_cover": {"lt": ${{ inputs.cloud_cover }}}}, # less than 10% cloud cover
+          query={"eo:cloud_cover": {"lt": ${{ inputs.cloud_cover }}}}
           )
 
           # Check how many items were returned
           items = search.item_collection()
           print(f"Returned {len(items)} Items")
 
+          # create xarray dataset without loading data
           sentinel2_stack = stackstac.stack(items)
+          # filter to specified month range
           sentinel2_stack_snowoff = sentinel2_stack.where((sentinel2_stack.time.dt.month >= ${{ inputs.start_month }}) & (sentinel2_stack.time.dt.month <= ${{ inputs.stop_month }}), drop=True)
 
           image_dates = sentinel2_stack_snowoff.time.dt.strftime('%Y-%m-%d').values.tolist()
@@ -127,23 +129,19 @@ jobs:
           print(f'number of image pairs: {len(pairs)}')
           
           with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
-              print(f'BURST_IDS={image_dates}', file=f)
+              print(f'IMAGE_DATES={image_dates}', file=f)
               print(f'MATRIX_PARAMS_COMBINATIONS={matrixJSON}', file=f)
 
-          #STOPPED HERE 5/29/2024
 
   # A matrix job that calls a reuseable workflow
-  hyp3-isce2:
-    needs: searchASF
+  autoRIFT:
+    needs: S2_search
     strategy:
       fail-fast: false
-      matrix: ${{ fromJson(needs.searchASF.outputs.MATRIX) }}
+      matrix: ${{ fromJson(needs.S2_search.outputs.MATRIX) }}
     name: ${{ matrix.name }}
-    uses: ./.github/workflows/single-job.yml
+    uses: ./.github/workflows/image_correlation_pair.yml
     with:
-      reference: ${{ matrix.reference }}
-      secondary: ${{ matrix.secondary }} 
-      looks: ${{ inputs.looks }}
-      apply_water_mask: ${{ inputs.apply_water_mask }}
+      img1_date: ${{ matrix.img1_date }}
+      img2_date: ${{ matrix.img2_date }} 
       workflow_name: ${{ matrix.name }}
-    secrets: inherit
