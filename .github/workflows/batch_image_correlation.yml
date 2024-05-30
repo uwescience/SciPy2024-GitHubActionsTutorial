@@ -63,7 +63,7 @@ jobs:
         uses: mamba-org/setup-micromamba@v1
         with:
           cache-environment: true
-          environment-file: environment.yml
+          environment-file: glacier_image_correlation/environment.yml
 
       # https://words.yuvi.in/post/python-in-github-actions/
       - name: Search aws for S2 imagery
