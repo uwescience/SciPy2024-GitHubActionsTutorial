@@ -117,6 +117,7 @@ jobs:
 
           # select first image of each month
           period_index = pd.PeriodIndex(sentinel2_stack_snowoff['time'].values, freq='M')
+          sentinel2_stack_snowoff.coords['year_month'] = ('time', period_index)
           first_image_indices = sentinel2_stack_snowoff.groupby('year_month').apply(lambda x: x.isel(time=0))
           
           product_names = first_image_indices['s2:product_uri'].values.tolist()
