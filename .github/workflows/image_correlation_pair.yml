@@ -10,12 +10,12 @@ on:
             type: string
             required: true
             description: S2 image 1 date
-            default: 2022-06-24
+            default: '2022-06-24T05:58:55'
         img2_date:
             type: string
             required: true
             description: S2 image 2 date
-            default: 2022-09-27
+            default: '2022-09-27T05:58:58'
         workflow_name:
             description: 'Custom workflow name'
             required: false
