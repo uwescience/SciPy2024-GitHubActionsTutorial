@@ -158,8 +158,8 @@ def prep_outputs(obj, img1_ds, img2_ds):
 
 def get_parser():
     parser = argparse.ArgumentParser(description="Run autoRIFT to find pixel offsets for two Sentinel-2 images")
-    parser.add_argument("img1_date", type=str, help="date of the first Sentinel-2 image in format YYYY-mm-dd")
-    parser.add_argument("img2_date", type=str, help="date of the second Sentinel-2 image in format YYYY-mm-dd")
+    parser.add_argument("img1_date", type=str, help="date of the first Sentinel-2 image in format %Y-%m-%dT%H:%M:%S")
+    parser.add_argument("img2_date", type=str, help="date of the second Sentinel-2 image in format %Y-%m-%dT%H:%M:%S")
     return parser
 
 def main():
@@ -185,6 +185,8 @@ def main():
     # grab near infrared band only
     img1 = img1_ds.nir.squeeze().values
     img2 = img2_ds.nir.squeeze().values
+
+    print(img2.shape)
     
     # scale search limit with temporal baseline assuming max velocity 1000 m/yr (100 px/yr)
     search_limit_x = search_limit_y = round(((((img2_ds.time.isel(time=0) - img1_ds.time.isel(time=0)).dt.days)*100)/365.25).item())
