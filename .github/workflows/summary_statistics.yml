@@ -39,6 +39,8 @@ jobs:
                 import rioxarray
                 from glob import glob
                 from datetime import datetime
+                import seaborn as sns
+                import matplotlib.pyplot as plt
 
                 # functions to load tifs to xarray
                 def xr_read_geotif(geotif_file_path, masked=True):
