@@ -36,14 +36,14 @@ def download_s2(img1_product_name, img2_product_name, bbox):
 
     search = catalog.search(
     collections=["sentinel-2-l2a"],
-    query=[f's2:product_uri={img1_product_uri}'])
+    query=[f's2:product_uri={img1_product_name}'])
     
     img1_items = search.item_collection()
     img1_full = stackstac.stack(img1_items)
 
     search = catalog.search(
     collections=["sentinel-2-l2a"],
-    query=[f's2:product_uri={img2_product_uri}'])
+    query=[f's2:product_uri={img2_product_name}'])
 
     # Check how many items were returned
     img2_items = search.item_collection()
@@ -157,7 +157,7 @@ def prep_outputs(obj, img1_ds, img2_ds):
 def get_parser():
     parser = argparse.ArgumentParser(description="Run autoRIFT to find pixel offsets for two Sentinel-2 images")
     parser.add_argument("img1_product_name", type=str, help="product name of first Sentinel-2 image")
-    parser.add_argument("img2_product_name", type=str, help="product name of first Sentinel-2 image")
+    parser.add_argument("img2_product_name", type=str, help="product name of second Sentinel-2 image")
     return parser
 
 def main():
@@ -183,8 +183,6 @@ def main():
     # grab near infrared band only
     img1 = img1_ds.nir.squeeze().values
     img2 = img2_ds.nir.squeeze().values
-
-    print(img2.shape)
     
     # scale search limit with temporal baseline assuming max velocity 1000 m/yr (100 px/yr)
     search_limit_x = search_limit_y = round(((((img2_ds.time.isel(time=0) - img1_ds.time.isel(time=0)).dt.days)*100)/365.25).item())
@@ -195,7 +193,7 @@ def main():
     ds = prep_outputs(obj, img1_ds, img2_ds)
 
     # write out velocity to tif
-    ds.veloc_horizontal.rio.to_raster(f'S2_{args.img1_date}_{args.img2_date}_horizontal_velocity.tif')
+    ds.veloc_horizontal.rio.to_raster(f'S2_{args.img1_product_name[11:19]}_{args.img2_product_name[11:19]}_horizontal_velocity.tif')
 
 if __name__ == "__main__":
    main()
