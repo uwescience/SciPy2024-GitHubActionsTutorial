@@ -25,13 +25,13 @@ on:
   # Must duplicate inputs for workflow_call (https://github.com/orgs/community/discussions/39357)
   workflow_call:
     inputs:
-        img1_date:
+        img1_product_name:
             type: string
             description: S2 image 1 product name 
         img2_date:
             type: string
             description: S2 image 2 product name 
-        workflow_name:
+        workflow_product_name:
             description: 'Custom workflow name'
             type: string
 
