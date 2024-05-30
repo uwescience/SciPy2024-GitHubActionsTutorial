@@ -28,10 +28,10 @@ on:
         img1_product_name:
             type: string
             description: S2 image 1 product name 
-        img2_date:
+        img2_product_name:
             type: string
             description: S2 image 2 product name 
-        workflow_product_name:
+        workflow_name:
             description: 'Custom workflow name'
             type: string
 
