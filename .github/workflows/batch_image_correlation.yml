@@ -151,3 +151,8 @@ jobs:
       img1_product_name: ${{ matrix.img1_product_name }}
       img2_product_name: ${{ matrix.img2_product_name }} 
       workflow_name: ${{ matrix.name }}
+
+  summary_statistics:
+    needs: [S2_search, autoRIFT]
+    name: summary_statistics
+    uses: ./.github/workflows/summary_statistics.yml
