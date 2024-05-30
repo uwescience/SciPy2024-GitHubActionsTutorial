@@ -10,12 +10,12 @@ on:
             type: string
             required: true
             description: S2 image 1 product name
-            default: 'S2A_MSIL2A_20200629T054641_N0500_R048_T43SEA_20230505T184918.SAFE'
+            default: S2A_MSIL2A_20200629T054641_N0500_R048_T43SEA_20230505T184918.SAFE
         img2_product_name:
             type: string
             required: true
             description: S2 image 2 product name 
-            default: 'S2B_MSIL2A_20200922T054639_N0500_R048_T43SEA_20230624T184729.SAFE'
+            default: S2B_MSIL2A_20200922T054639_N0500_R048_T43SEA_20230624T184729.SAFE
         workflow_name:
             description: 'Custom workflow name'
             required: false
