@@ -26,7 +26,7 @@ on:
             type: choice
             required: true
             description: number of pairs per image
-            default: '3'
+            default: '1'
             options: ['3','2','1']
 
   # Must duplicate inputs for workflow_call (https://github.com/orgs/community/discussions/39357)
@@ -78,6 +78,7 @@ jobs:
           from dask.distributed import Client
           import dask
           import json
+          import pandas as pd
 
           # GDAL environment variables for better performance
           os.environ['AWS_REGION']='us-west-2'
@@ -114,22 +115,26 @@ jobs:
           # filter to specified month range
           sentinel2_stack_snowoff = sentinel2_stack.where((sentinel2_stack.time.dt.month >= ${{ inputs.start_month }}) & (sentinel2_stack.time.dt.month <= ${{ inputs.stop_month }}), drop=True)
 
-          image_dates = sentinel2_stack_snowoff.time.dt.strftime('%Y-%m-%d').values.tolist()
-          print('\n'.join(image_dates))
+          # select first image of each month
+          period_index = pd.PeriodIndex(sentinel2_stack_snowoff['time'].values, freq='M')
+          first_image_indices = sentinel2_stack_snowoff.groupby('year_month').apply(lambda x: x.isel(time=0))
+          
+          product_names = first_image_indices['s2:product_uri'].values.tolist()
+          print('\n'.join(product_names))
 
           # Create Matrix Job Mapping (JSON Array)
           pairs = []
-          for r in range(len(image_dates) - ${{ inputs.npairs }}):
+          for r in range(len(product_names) - ${{ inputs.npairs }}):
               for s in range(1, ${{ inputs.npairs }} + 1 ):
-                img1_date = image_dates[r]
-                img2_date = image_dates[r+s]
-                shortname = f'{img1_date}_{img2_date}'
-                pairs.append({'img1_date': img1_date, 'img2_date': img2_date, 'name':shortname})
+                img1_product_name = product_names[r]
+                img2_product_name = product_names[r+s]
+                shortname = f'{img1_product_name[11:19]}_{img2_product_name[11:19]}'
+                pairs.append({'img1_product_name': img1_product_name, 'img2_product_name': img2_product_name, 'name':shortname})
           matrixJSON = f'{{"include":{json.dumps(pairs)}}}'
           print(f'number of image pairs: {len(pairs)}')
           
           with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
-              print(f'IMAGE_DATES={image_dates}', file=f)
+              print(f'IMAGE_DATES={product_names}', file=f)
               print(f'MATRIX_PARAMS_COMBINATIONS={matrixJSON}', file=f)
 
 
@@ -142,6 +147,6 @@ jobs:
     name: ${{ matrix.name }}
     uses: ./.github/workflows/image_correlation_pair.yml
     with:
-      img1_date: ${{ matrix.img1_date }}
-      img2_date: ${{ matrix.img2_date }} 
+      img1_date: ${{ matrix.img1_product_name }}
+      img2_date: ${{ matrix.img2_product_name }} 
       workflow_name: ${{ matrix.name }}

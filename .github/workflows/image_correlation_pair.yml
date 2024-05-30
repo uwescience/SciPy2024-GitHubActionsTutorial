@@ -6,16 +6,16 @@ run-name: ${{ inputs.workflow_name }}
 on:
   workflow_dispatch:
     inputs:
-        img1_date:
+        img1_product_name:
             type: string
             required: true
-            description: S2 image 1 date
-            default: 2022-06-24
-        img2_date:
+            description: S2 image 1 product name
+            default: 'S2A_MSIL2A_20200629T054641_N0500_R048_T43SEA_20230505T184918.SAFE'
+        img2_product_name:
             type: string
             required: true
-            description: S2 image 2 date
-            default: 2022-09-27
+            description: S2 image 2 product name 
+            default: 'S2B_MSIL2A_20200922T054639_N0500_R048_T43SEA_20230624T184729.SAFE'
         workflow_name:
             description: 'Custom workflow name'
             required: false
@@ -27,10 +27,10 @@ on:
     inputs:
         img1_date:
             type: string
-            description: S2 image 1 date
+            description: S2 image 1 product name 
         img2_date:
             type: string
-            description: S2 image 2 date
+            description: S2 image 2 product name 
         workflow_name:
             description: 'Custom workflow name'
             type: string
@@ -62,13 +62,8 @@ jobs:
             - name: download data and run autoRIFT software
               run: |
                 python glacier_image_correlation/image_correlation.py \
-                    ${{ inputs.img1_date }} \
-                    ${{ inputs.img2_date }}
-
-            - name: Get Dates for Output Subfolder Name
-              run: |
-                PREFIX=${REF:17:8}_${SEC:17:8}
-                echo "PREFIX=${PREFIX}" >> $GITHUB_ENV
+                    ${{ inputs.img1_product_name }} \
+                    ${{ inputs.img2_product_name }}
 
             - name: Upload velocity 
               uses: actions/upload-artifact@v4
