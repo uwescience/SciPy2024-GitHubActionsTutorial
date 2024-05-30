@@ -21,7 +21,7 @@ import argparse
 warnings.filterwarnings("ignore", category=RuntimeWarning)
 warnings.filterwarnings("ignore", category=UserWarning)
 
-def download_s2(img1_date, img2_date, bbox):
+def download_s2(img1_product_name, img2_product_name, bbox):
     '''
     Download a pair of Sentinel-2 images acquired on given dates over a given bounding box
     '''
@@ -36,16 +36,14 @@ def download_s2(img1_date, img2_date, bbox):
 
     search = catalog.search(
     collections=["sentinel-2-l2a"],
-    intersects=bbox,
-    datetime=img1_date)
+    query=[f's2:product_uri={img1_product_uri}'])
     
     img1_items = search.item_collection()
     img1_full = stackstac.stack(img1_items)
 
     search = catalog.search(
     collections=["sentinel-2-l2a"],
-    intersects=bbox,
-    datetime=img2_date)
+    query=[f's2:product_uri={img2_product_uri}'])
 
     # Check how many items were returned
     img2_items = search.item_collection()
@@ -158,8 +156,8 @@ def prep_outputs(obj, img1_ds, img2_ds):
 
 def get_parser():
     parser = argparse.ArgumentParser(description="Run autoRIFT to find pixel offsets for two Sentinel-2 images")
-    parser.add_argument("img1_date", type=str, help="date of the first Sentinel-2 image in format %Y-%m-%dT%H:%M:%S")
-    parser.add_argument("img2_date", type=str, help="date of the second Sentinel-2 image in format %Y-%m-%dT%H:%M:%S")
+    parser.add_argument("img1_product_name", type=str, help="product name of first Sentinel-2 image")
+    parser.add_argument("img2_product_name", type=str, help="product name of first Sentinel-2 image")
     return parser
 
 def main():
@@ -181,7 +179,7 @@ def main():
     }
 
     # download Sentinel-2 images
-    img1_ds, img2_ds = download_s2(args.img1_date, args.img2_date, bbox)
+    img1_ds, img2_ds = download_s2(args.img1_product_name, args.img2_product_name, bbox)
     # grab near infrared band only
     img1 = img1_ds.nir.squeeze().values
     img2 = img2_ds.nir.squeeze().values
