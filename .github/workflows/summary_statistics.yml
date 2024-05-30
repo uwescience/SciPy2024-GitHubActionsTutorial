@@ -1,14 +1,14 @@
 # Batch process many image pairs
-name: stack_velocity_maps
-run-name: stack_velocity_maps
+name: summary_statistics
+run-name: summary_statistics
 
 on:
   workflow_dispatch:
   workflow_call:
 
 jobs:
-    stack_velocity:
-        name: stack_velocity
+    summary_statistics:
+        name: summary_statistics
         runs-on: ubuntu-latest
         defaults:
             run:
