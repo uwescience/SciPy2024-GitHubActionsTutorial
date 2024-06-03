@@ -1,13 +1,13 @@
 # Measuring Glacier Surface Velocity
 #### Quinn Brencher, University of Washington
 
-This set of Github Actions workflows allows you to measure horizontal glacier surface velocity from Sentinel-2 image pairs using [autoRIFT software](https://github.com/nasa-jpl/autoRIFT). No external accounts or API keys are required. These workflows were created for the Github Actions for Scientific Data Workflows workshop and the 2024 SciPy conference. 
+This set of Github Actions workflows allows you to measure horizontal glacier surface velocity from Sentinel-2 image pairs using [autoRIFT software](https://github.com/nasa-jpl/autoRIFT). No external accounts or API keys are required. These workflows were created for the Github Actions for Scientific Data Workflows workshop at the 2024 SciPy conference. 
 
 ## Usage
-We use three workflows to make measurements of glacier surface velocity. For demonstration purposes the workflows are only set up to work over the [Yazghil Glacier](https://earth.google.com/earth/d/1myewNJrDEM0tW1_xdpWCYaRCGDcOBwiy?usp=drive_link) in Pakistan. To run the workflows, simply fork this repository, visit the "Actions" tab, and choose the `batch_image_correlation` workflow (which runs the other two workflows as well). 
+We use three workflows to batch process image pairs for glacier surface velocity. For demonstration purposes the workflows are only set up to work over the [Yazghil Glacier](https://earth.google.com/earth/d/1myewNJrDEM0tW1_xdpWCYaRCGDcOBwiy?usp=drive_link) in Pakistan. To run the workflows, simply fork this repository, visit the "Actions" tab, and choose the `batch_image_correlation` workflow (which runs the other two workflows as well). 
 
 ### 1. `image_correlation_pair`
-This workflow calls a Python script (image_correlation.py) that runs autoRIFT on a pair of spatially overlapping [Sentinel-2 L2A](https://docs.sentinel-hub.com/api/latest/data/sentinel-2-l2a/) images. It only requires the [product names](https://sentiwiki.copernicus.eu/web/s2-products) of the two images. The images are downloaded from aws using the [Element 84 Earth Search API](https://element84.com/earth-search/). Only the near infrared band (NIR, B08) is used which has a spatial resolution of 10 m. autoRIFT is used to perform image correlation. Search distances are scaled with temporal baseline assuming a maximum surface velocity of 1000 m/yr, so images acquired farther apart in time take longer to process. Surface velocity maps are saved as geotifs and uploaded as [Github Artifacts](https://docs.github.com/en/actions/using-workflows/storing-workflow-data-as-artifacts). 
+This workflow calls a Python script (image_correlation.py) that runs autoRIFT on a pair of spatially overlapping [Sentinel-2 L2A](https://docs.sentinel-hub.com/api/latest/data/sentinel-2-l2a/) images. It requires the [product names](https://sentiwiki.copernicus.eu/web/s2-products) of the two images. The images are downloaded from aws using the [Element 84 Earth Search API](https://element84.com/earth-search/). Only the near infrared band (NIR, B08) is used which has a spatial resolution of 10 m. autoRIFT is used to perform image correlation. Search distances are scaled with temporal baseline assuming a maximum surface velocity of 1000 m/yr, so images acquired farther apart in time take longer to process. Surface velocity maps are saved as geotifs and uploaded as [Github Artifacts](https://docs.github.com/en/actions/using-workflows/storing-workflow-data-as-artifacts). 
 
 ![plot](./images/input_images.png)
 
@@ -26,5 +26,5 @@ This workflow downloads all of the velocity maps created during a `batch_image_c
 
 
 ## Acknowledgements
-- Scott Henderson developed much of the original ideas and code used for this set of workflows
+- Scott Henderson developed many of the original ideas and much of code used for this set of workflows
 - [University of Washington eScience Incubator Program 2024](https://escience.washington.edu/incubator-24-glacial-lakes/)
