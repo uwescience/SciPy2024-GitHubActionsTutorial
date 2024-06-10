@@ -5,10 +5,16 @@
   * [Managing Permissions Documentation](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#managing-github-actions-permissions-for-your-repository) 
 
 # GitHub Actions Python Environment Workflow
+
 First, we will run a basic workflow which creates a python environment with a few scientific packages and prints out their version
-* [.github/workflows/python_env.yml](https://github.com/valentina-s/GithubActionsTutorial-USRSE23/blob/main/.github/workflows/python_env.yml)
+* [.github/workflows/python_env.yml](https://github.com/valentina-s/GithubActionsTutorial-USRSE23/blob/main/.github/workflows/python_env.yml(https://github.com/uwescience/SciPy2024-GitHubActionsTutorial/blob/main/.github/workflows/python_env.yml))
 * go to **Actions** tab, click on **Python Environment**, and click **Run workflow**: this will manually trigger the workflow ([`dispatch_workflow`](https://docs.github.com/en/actions/managing-workflow-runs/manually-running-a-workflow))
 * click on the newly created run to see the execution progress
+
+## Conda Environment
+We can also install packages through conda (instead of `pip`). We will use a `miniconda-setup` action to achieve that easily.
+
+[.github/workflows/conda_env.yml](https://github.com/uwescience/SciPy2024-GitHubActionsTutorial/blob/main/.github/workflows/conda_env.yml)
 
 # Orcasound Spectrogram Visualization Workflow
 
@@ -17,8 +23,8 @@ Next, we will demonstrate how GitHub Actions can be used to display a spectrogra
 * [`.github/workflows/orcasound_processing.yml`](https://github.com/valentina-s/GithubActionsTutorial-USRSE23/blob/main/.github/workflows/orcasound_processing.yml)
 * workflow steps:
   * download data from S3 for a particular timestamp
-  * convert the last file from `.ts` to `.wav` format (in [`orcasound_processing.py`](https://github.com/valentina-s/GithubActionsTutorial-USRSE23/blob/main/orcasound_processing.py))
-  * create and save spectrogram in `spec.png` (in [`orcasound_processing.py`](https://github.com/valentina-s/GithubActionsTutorial-USRSE23/blob/main/orcasound_processing.py))
+  * convert the last file from `.ts` to `.wav` format 
+  * create and save spectrogram in `spec.png` (in [`noise_processing.py`](https://github.com/uwescience/SciPy2024-GitHubActionsTutorial/blob/main/ambient_sound_analysis/noise_processing.py))
   * upload `spec.png` to GitHub 
 
 After the workflow is executed a `spec.png` file is updated in the repo and is visualized below.
