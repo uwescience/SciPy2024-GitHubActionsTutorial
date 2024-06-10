@@ -13,5 +13,6 @@ jobs:
           miniconda-version: "latest"
           channels: conda-forge, defaults
           activate-environment: scipy
+          python-version: 3.9
 
 
