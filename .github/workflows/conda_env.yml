@@ -21,6 +21,7 @@ jobs:
           conda install scipy
 
       - name: Hello World 
+        shell: pwsh
         run: |
           python -c "import scipy as sp; print('Scipy version: '+sp.__version__)"
 
