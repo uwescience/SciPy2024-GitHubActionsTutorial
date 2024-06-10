@@ -15,4 +15,9 @@ jobs:
           activate-environment: scipy
           python-version: 3.9
 
+      - name: Install conda packages
+        shell: pwsh
+        run: |
+          conda install scipy
+
 
