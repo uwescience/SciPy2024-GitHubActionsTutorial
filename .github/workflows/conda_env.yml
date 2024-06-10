@@ -8,18 +8,12 @@ jobs:
   setup:
     runs-on: ubuntu-latest
     steps:
-      - uses: conda-incubator/setup-miniconda@v2
+      - uses: conda-incubator/setup-miniconda@v3
         with:
           miniconda-version: "latest"
           channels: conda-forge, defaults
           activate-environment: scipy
           python-version: 3.10
-    
-      - name: Install conda packages
+      - name: Conda list
         shell: pwsh
-        run: |
-          conda install scipy
-
-      - name: Hello World 
-        run: |
-          python -c "import scipy as sp; print('Scipy version: '+sp.__version__)"
+        run: conda list
