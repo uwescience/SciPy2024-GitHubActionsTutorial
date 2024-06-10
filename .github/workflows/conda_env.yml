@@ -20,7 +20,8 @@ jobs:
     
       - name: Install conda packages
         shell: pwsh
-        run: conda install scipy
+        run: |
+          conda install scipy
 
       - name: Hello World 
         run: |
