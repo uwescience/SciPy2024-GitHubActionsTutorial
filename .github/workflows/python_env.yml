@@ -12,8 +12,6 @@ jobs:
     
     - name: Install Python dependencies
       run: |
-        python -m pip install -U pip
-        python -m pip install -U setuptools wheel
         python -m pip install matplotlib scipy
 
     - name: Hello World 
