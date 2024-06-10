@@ -1,0 +1,45 @@
+name: Ambient Sound Processing
+
+on:
+  # To run manually
+  workflow_dispatch:
+  # schedule:
+  #  - cron: '9 * * * *'
+    
+jobs:
+  process:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - uses: actions/setup-python@v4
+      with:
+        python-version: '3.9.18'
+
+    - name: Install Python dependencies
+      run: |
+        python -m pip install -U pip
+        python -m pip install -U setuptools wheel
+        python -m pip install -r requirements_noise.txt
+
+ 
+    - name: Install ffmpeg
+      run: |
+        sudo apt-get update
+        sudo apt-get install ffmpeg
+
+    # - name: Get latest timestamp
+    #   run: |
+    #     aws --no-sign-request s3 cp s3://streaming-orcasound-net/rpi_bush_point/latest.txt .
+    #     read -r timestamp<latest.txt
+    #     echo "timestamp=$timestamp" >> $GITHUB_ENV
+
+    - name: Create plots
+      if: steps.cache.outputs.cache-hit != 'true'
+      run: |
+        python noise_processing.py
+
+    - uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+          commit_message: Commit to Github
+          file_pattern: 'img/*.png'
