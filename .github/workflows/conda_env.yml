@@ -20,4 +20,8 @@ jobs:
         run: |
           conda install scipy
 
+      - name: Hello World 
+        run: |
+          python -c "import scipy as sp; print('Scipy version: '+sp.__version__)"
+
 
