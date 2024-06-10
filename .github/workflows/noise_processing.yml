@@ -28,18 +28,12 @@ jobs:
         sudo apt-get update
         sudo apt-get install ffmpeg
 
-    # - name: Get latest timestamp
-    #   run: |
-    #     aws --no-sign-request s3 cp s3://streaming-orcasound-net/rpi_bush_point/latest.txt .
-    #     read -r timestamp<latest.txt
-    #     echo "timestamp=$timestamp" >> $GITHUB_ENV
-
     - name: Create plots
       if: steps.cache.outputs.cache-hit != 'true'
       run: |
-        python noise_processing.py
+        python ambient_sound_analysis/noise_processing.py
 
     - uses: stefanzweifel/git-auto-commit-action@v4
       with:
           commit_message: Commit to Github
-          file_pattern: 'img/*.png'
+          file_pattern: 'ambient_sound_analysis/img/*.png'
