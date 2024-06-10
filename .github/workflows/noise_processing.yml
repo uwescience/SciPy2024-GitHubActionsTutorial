@@ -20,7 +20,7 @@ jobs:
       run: |
         python -m pip install -U pip
         python -m pip install -U setuptools wheel
-        python -m pip install -r requirements_noise.txt
+        python -m pip install -r ambient_sound_analysis/requirements_noise.txt
 
  
     - name: Install ffmpeg
