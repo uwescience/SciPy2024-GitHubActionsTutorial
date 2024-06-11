@@ -1,0 +1,11 @@
+name: website
+channels:
+  - conda-forge
+dependencies:
+  - cartopy
+  - geoviews
+  - h5netcdf
+  - hvplot
+  - nbconvert
+  - pooch
+  - xarray
