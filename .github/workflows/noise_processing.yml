@@ -33,7 +33,7 @@ jobs:
       run: |
         python ambient_sound_analysis/noise_processing.py
 
-    - uses: stefanzweifel/git-auto-commit-action@v4
+    - uses: stefanzweifel/git-auto-commit-action@v5
       with:
           commit_message: Commit to Github
           file_pattern: 'ambient_sound_analysis/img/*.png'
