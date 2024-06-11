@@ -21,11 +21,6 @@ def main():
     parser = get_parser()
     args = parser.parse_args()
     
-    # # GDAL environment variables for better performance
-    # os.environ['AWS_REGION']='us-west-2'
-    # os.environ['GDAL_DISABLE_READDIR_ON_OPEN']='EMPTY_DIR' 
-    # os.environ['AWS_NO_SIGN_REQUEST']='YES'
-    
     # hardcode bbox for now
     bbox = {
         "type": "Polygon",
