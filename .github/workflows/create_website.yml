@@ -33,6 +33,7 @@ jobs:
       - name: Build Website
         shell: bash -el {0}
         run: |
+          jupyter kernelspec list
           jupyter nbconvert --execute --to html website_figure/myfigure.ipynb
 
       - name: Upload artifact
