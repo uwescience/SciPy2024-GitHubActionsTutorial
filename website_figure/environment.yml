@@ -6,6 +6,7 @@ dependencies:
   - geoviews
   - h5netcdf
   - hvplot
+  - ipykernel
   - nbconvert
   - pooch
   - xarray
