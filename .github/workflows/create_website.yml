@@ -33,12 +33,12 @@ jobs:
       - name: Build Website
         shell: bash -el {0}
         run: |
-          jupyter nbconvert --execute --to html myfigure.ipynb
+          jupyter nbconvert --execute --to html website_figure/myfigure.ipynb
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: myfigure.html
+          path: website_figure/myfigure.html
 
 
   # Publish Website to GitHub Pages if built successfully
