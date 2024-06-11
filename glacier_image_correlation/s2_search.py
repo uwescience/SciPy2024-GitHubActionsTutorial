@@ -7,6 +7,7 @@ from dask.distributed import Client
 import dask
 import json
 import pandas as pd
+import argparse
 
 def get_parser():
     parser = argparse.ArgumentParser(description="Search for Sentinel-2 images")
