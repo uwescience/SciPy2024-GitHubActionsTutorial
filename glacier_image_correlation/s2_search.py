@@ -44,7 +44,7 @@ def main():
     search = catalog.search(
         collections=["sentinel-2-l2a"],
         intersects=bbox,
-        query={"eo:cloud_cover": {"lt": args.cloud_cover}}
+        query={"eo:cloud_cover": {"lt": float(args.cloud_cover)}}
     )
     
     # Check how many items were returned
@@ -54,7 +54,7 @@ def main():
     # create xarray dataset without loading data
     sentinel2_stack = stackstac.stack(items)
     # filter to specified month range
-    sentinel2_stack_snowoff = sentinel2_stack.where((sentinel2_stack.time.dt.month >= args.start_month) & (sentinel2_stack.time.dt.month <= args.stop_month), drop=True)
+    sentinel2_stack_snowoff = sentinel2_stack.where((sentinel2_stack.time.dt.month >= int(args.start_month)) & (sentinel2_stack.time.dt.month <= int(args.stop_month)), drop=True)
     
     # select first image of each month
     period_index = pd.PeriodIndex(sentinel2_stack_snowoff['time'].values, freq='M')
@@ -66,8 +66,8 @@ def main():
     
     # Create Matrix Job Mapping (JSON Array)
     pairs = []
-    for r in range(len(product_names) - args.npairs):
-        for s in range(1, args.npairs + 1 ):
+    for r in range(len(product_names) - int(args.npairs)):
+        for s in range(1, int(args.npairs) + 1 ):
             img1_product_name = product_names[r]
             img2_product_name = product_names[r+s]
             shortname = f'{img1_product_name[11:19]}_{img2_product_name[11:19]}'
