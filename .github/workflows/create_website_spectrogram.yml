@@ -1,4 +1,4 @@
-name: Deploy Website to GitHub Pages
+name: Deploy Spectrogram Website to GitHub Pages
 
 on:
   # Runs on pushes targeting the default branch
