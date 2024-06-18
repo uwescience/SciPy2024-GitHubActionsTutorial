@@ -3,5 +3,5 @@ scipy
 pandas
 m3u8 
 git+https://github.com/kkroening/ffmpeg-python
-orcasound_noise@git+https://github.com/orcasound/ambient-sound-analysis@quiet-ffmpeg
+orcasound_noise@git+https://github.com/orcasound/ambient-sound-analysis@ffmpeg-quiet
 kaleido
