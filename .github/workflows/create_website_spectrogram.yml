@@ -47,7 +47,7 @@ jobs:
         shell: bash -el {0}
         run: |
           cd ambient_sound_analysis
-          jupyter nbconvert plot_noise_levels.ipynb --execute --to html --output-dir=_build/html
+          jupyter nbconvert plot_noise_levels.ipynb --execute --to html --output-dir=_build/html --no-input
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
