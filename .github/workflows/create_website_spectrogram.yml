@@ -38,6 +38,11 @@ jobs:
           pip install ipykernel
           pip install nbconvert
 
+      - name: Install ffmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install ffmpeg
+
       - name: Build Website
         shell: bash -el {0}
         run: |
