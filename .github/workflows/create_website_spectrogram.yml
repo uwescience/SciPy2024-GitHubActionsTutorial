@@ -1,0 +1,73 @@
+name: Deploy Spectrogram Website to GitHub Pages
+
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches: ["main", "spectrogram_website"]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  pages: write
+  id-token: write
+
+jobs:
+  # Build Website
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -l {0}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.9.18'
+          cache: 'pip' # caching pip dependencies
+          cache-dependency-path: ambient_sound_analysis/requirements_noise.txt
+
+
+
+      - name: Install Python dependencies
+        run: |
+          pip install -r ambient_sound_analysis/requirements_noise.txt
+          pip install ipykernel
+          pip install nbconvert
+
+      - name: Install ffmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install ffmpeg
+
+      - name: Build Website
+        shell: bash -el {0}
+        run: |
+          cd ambient_sound_analysis
+          jupyter nbconvert plot_noise_levels.ipynb --execute --to html --output-dir=_build/html --no-input
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ambient_sound_analysis/_build/html
+
+
+  # Publish Website to GitHub Pages if built successfully
+  deploy:
+    needs: build
+    if: github.ref == 'refs/heads/spectrogram_website'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
