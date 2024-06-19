@@ -18,14 +18,23 @@ We can also install packages through conda (instead of `pip`). We will use a `mi
 
 # Orcasound Spectrogram Visualization Workflow
 
-Next, we will demonstrate how GitHub Actions can be used to display a spectrogram of a snippet from an underwater audio stream.
+Next, we will demonstrate how GitHub Actions can be used to display a spectrogram for a segment from an underwater audio stream.
 
-* [`.github/workflows/orcasound_processing.yml`](https://github.com/valentina-s/GithubActionsTutorial-USRSE23/blob/main/.github/workflows/orcasound_processing.yml)
+* [`.github/workflows/noise_processing.yml`](https://github.com/uwescience/SciPy2024-GitHubActionsTutorial/blob/main/.github/workflows/noise_processing.yml)
 * workflow steps:
-  * download data from S3 for a particular timestamp
-  * convert the last file from `.ts` to `.wav` format 
-  * create and save spectrogram in `spec.png` (in [`noise_processing.py`](https://github.com/uwescience/SciPy2024-GitHubActionsTutorial/blob/main/ambient_sound_analysis/noise_processing.py))
-  * upload `spec.png` to GitHub 
+  * generate spectrogram for a period of time (with `ambient_sound_analysis` package)
+  		* Download data from AWS S3 bucket (in `.ts` format) for a given time period
+  		* Convert many small `.ts` files to one file in `.wav` format
+  		* Generate power spectrogram and store it in `.parquet` format
+  * read the power spectrogram in `pandas` dataframe format 
+  * create plots and save it as a `psd.png`.
+  * upload `psd.png` to GitHub 
 
-After the workflow is executed a `spec.png` file is updated in the repo and is visualized below.
-![alt text](https://raw.githubusercontent.com/valentina-s/orca-action-workflow-test/main/png/spec.png)
+After the workflow is executed a `psd.png` and `broadband.png`files are updated in the repo and is visualized below.
+![alt text](https://raw.githubusercontent.com/valentina-s/uwescience/SciPy2024-GitHubActionsTutorial/blob/main/ambient_sound_analysis/img/psd.png)
+
+![alt text](https://raw.githubusercontent.com/valentina-s/uwescience/SciPy2024-GitHubActionsTutorial/blob/main/ambient_sound_analysis/img/broadband.png)
+
+
+
+
