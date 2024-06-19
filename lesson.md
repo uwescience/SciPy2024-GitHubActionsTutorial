@@ -31,9 +31,9 @@ Next, we will demonstrate how GitHub Actions can be used to display a spectrogra
   * upload `psd.png` to GitHub 
 
 After the workflow is executed a `psd.png` and `broadband.png`files are updated in the repo and is visualized below.
-![alt text](https://raw.githubusercontent.com/valentina-s/uwescience/SciPy2024-GitHubActionsTutorial/blob/main/ambient_sound_analysis/img/psd.png)
+![alt text](https://raw.githubusercontent.com/uwescience/SciPy2024-GitHubActionsTutorial/main/ambient_sound_analysis/img/psd.png)
 
-![alt text](https://raw.githubusercontent.com/valentina-s/uwescience/SciPy2024-GitHubActionsTutorial/blob/main/ambient_sound_analysis/img/broadband.png)
+![alt text](https://raw.githubusercontent.com/uwescience/SciPy2024-GitHubActionsTutorial/main/ambient_sound_analysis/img/broadband.png)
 
 
 
