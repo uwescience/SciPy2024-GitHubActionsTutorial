@@ -15,7 +15,7 @@ from orcasound_noise.pipeline.acoustic_util import plot_spec, plot_bb
 # Set Location and Resolution
 # Port Townsend, 1 Hz Frequency, 60-second samples
 if __name__ == '__main__':
-    pipeline = NoiseAnalysisPipeline(Hydrophone.PORT_TOWNSEND,
+    pipeline = NoiseAnalysisPipeline(Hydrophone.ORCASOUND_LAB,
                                      delta_f=10, bands=None,
                                      delta_t=60, mode='safe')
 
