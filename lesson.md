@@ -51,5 +51,37 @@ After the workflow is executed `psd.png` and `broadband.png`files are updated in
 ![alt text](https://raw.githubusercontent.com/uwescience/SciPy2024-GitHubActionsTutorial/main/ambient_sound_analysis/img/broadband.png)
 
 
+# Exporting Results
+
+We will discuss several different ways to export results.
+
+## Uploading to the GitHub Repository
+
+One of the easiest ways to display results is to store them in the GitHub repository. This can be a quick solution, for example, to display a small plot or a table within the `Readme.md` of the repository and update it as the workflow is rerun. This is not a practical solution for big outputs as the GitHub repositories are recommended to not exceed more than 1GB, and all versions of the files will be preserved in the repository's history (thus slowing down cloning). 
+
+It is possible to execute all steps to add, commit, and push a file to GitHub, but there is already an [GitHub Auto Commit Action]https://github.com/marketplace/actions/git-auto-commit) to achieve that.
+
+![alt text](https://raw.githubusercontent.com/uwescience/SciPy2024-GitHubActionsTutorial/main/img/auto-commit-action.png)
+
+## Uploading as a GitHub Workflow Artifact
+
+
+
+## Uploading to Personal Storage
+
+A more long-term solution is to store outputs to personal storage. This could be for example Google Drive or a Cloud Provider Object Storage such as an AWS S3 bucket. To have a write access to these storage systems one will need to provide the credential information securely to GitHub Actions.
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
