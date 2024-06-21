@@ -1,7 +1,7 @@
 # Overview
 
 1. [Setup](#setup)
-2. [GitHub Actions Python Environment](#github-actions-python-environment)
+2. [GitHub Actions Python Environment](#github-actions-python-environment-workflow)
 3. [Orcasound Spectrogram Visualization Workflow](#orcasound-spectrogram-visualization-workflow)
 4. [Exporting Results](#exporting-results)
 5. [Scaling Workflows](#scaling-workflows)
