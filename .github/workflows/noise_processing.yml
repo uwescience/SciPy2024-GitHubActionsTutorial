@@ -49,3 +49,10 @@ jobs:
       with:
         name: ambient_sound_plots
         path: ambient_sound_analysis/img/*.png
+
+    - name: Upload to Google Drive
+      uses: AnimMouse/setup-rclone@v1
+      with:
+        rclone_config: ${{secrets.RCLONE_CONFIG}}
+      
+    - run: rclone copy ambient_sound_analysis/img/*.png: mydrive:rclone_uploads/
