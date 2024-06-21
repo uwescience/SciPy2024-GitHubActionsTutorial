@@ -55,4 +55,4 @@ jobs:
       with:
         rclone_config: ${{secrets.RCLONE_CONFIG}}
       
-      run: rclone copy ambient_sound_analysis/img/*.png mydrive:rclone_uploads/
+    - run: rclone copy ambient_sound_analysis/img/*.png mydrive:rclone_uploads/
