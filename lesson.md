@@ -63,13 +63,64 @@ It is possible to execute all steps to add, commit, and push a file to GitHub, b
 
 ![alt text](https://raw.githubusercontent.com/uwescience/SciPy2024-GitHubActionsTutorial/main/img/auto-commit-action.png)
 
+
 ## Uploading as a GitHub Workflow Artifact
+
+GitHub provides an option for temporary storage of GitHub Action data as Workflow Artifacts. These are kept on the GitHub website as zipped files and can downloaded within 90 days for public repositories, or 400 days for private repositories.
+
+There is a GitHub Action which can upload file/s as GitHub Artifacts. 
+
+![alt text](https://raw.githubusercontent.com/uwescience/SciPy2024-GitHubActionsTutorial/main/img/artifact-upload-action.png)
+
+The artifact can be found by clicking on the workflow run and scrolling down to a section Artifacts.
+
+![alt text](https://raw.githubusercontent.com/uwescience/SciPy2024-GitHubActionsTutorial/main/img/artifact_github_interface.png)
+
+
+The artifact can be downloaded directly from the interface but also can be downloaded through the GitHub client.
+
+```
+gh run download
+```
+
+The workflow run also provides a publicly available link to the download artifact:
+
+Artifact download URL: [https://github.com/uwescience/SciPy2024-
+GitHubActionsTutorial/actions/runs/9591972369/artifacts/1619380017](https://github.com/uwescience/SciPy2024-
+GitHubActionsTutorial/actions/runs/9591972369/artifacts/1619380017)
+
+There is a `download-artifact` action to download the artifacts and share between jobs within a workflow run (note this is limited to the inidividual workflow run, for downloading across runs use the other options).
+
+[Here](Artifact download URL: https://github.com/uwescience/SciPy2024-
+GitHubActionsTutorial/actions/runs/9591972369/artifacts/1619380017) is more detailed documentation on GitHub Artifacts.
+
 
 
 
 ## Uploading to Personal Storage
 
 A more long-term solution is to store outputs to personal storage. This could be for example Google Drive or a Cloud Provider Object Storage such as an AWS S3 bucket. To have a write access to these storage systems one will need to provide the credential information securely to GitHub Actions.
+
+The write operation can be achieved directly from the Python code or from the GitHub Action configuration.
+
+
+
+
+# Visualizing Results on a Webpage
+
+
+# Scaling Workflows
+
+# Model Versioning and Benchmarking
+
+# Ideas for Use Cases/Discussion
+
+
+
+
+
+
+
 
 
 
