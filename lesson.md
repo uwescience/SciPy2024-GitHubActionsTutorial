@@ -1,3 +1,11 @@
+# Overview
+
+1. [Setup](#setup)
+2. [GitHub Actions Python Environment](#github-actions-python-environment)
+3. [Orcasound Spectrogram Visualization Workflow](#orcasound-spectrogram-visualization-workflow)
+4. [Exporting Results](#exporting-results)
+5. [Scaling Workflows](#scaling-workflows)
+
 # Setup 
 * Fork this repo
 * Enable Github Actions:
@@ -108,12 +116,9 @@ The write operation can be achieved directly from the Python code or from the Gi
 
 # Visualizing Results on a Webpage
 
-
 # Scaling Workflows
 
-# Model Versioning and Benchmarking
 
-# Ideas for Use Cases/Discussion
 
 
 
