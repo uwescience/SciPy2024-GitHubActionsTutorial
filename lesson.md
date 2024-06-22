@@ -107,9 +107,24 @@ GitHubActionsTutorial/actions/runs/9591972369/artifacts/1619380017) is more deta
 
 ## Uploading to Personal Storage
 
-A more long-term solution is to store outputs to personal storage. This could be for example Google Drive or a Cloud Provider Object Storage such as an AWS S3 bucket. To have a write access to these storage systems one will need to provide the credential information securely to GitHub Actions.
+A more long-term solution is to store outputs to personal storage. This could be for example Google Drive or a Cloud Provider Object Storage such as an AWS S3 bucket. To have a write access to these storage systems one will need to provide the credential information securely to GitHub Actions. This can be achieved through storing the credential information as Action Secrets.
 
-The write operation can be achieved directly from the Python code or from the GitHub Action configuration.
+The write operation can be performed directly from the Python code or from the GitHub Action configuration. Here will demonstrate how to upload data to Google Drive with `rclone`, a tool for transferring data between storage system which is quite provide agnostic.
+
+The approach consists of a few steps:
+
+1. use an `rclone` GitHub Action to avoid installing `rclone` manually
+  *  we will use [AnimMouse/setup-rclone](https://github.com/marketplace/actions/setup-rclone-action)
+* configure a Google Drive remote locally
+* encode the text in the config file and save it as a secret `RCLONE_CONFIG`
+  * MacOX: `openssl base64 -in ~/.config/rclone/rclone_drive.conf`
+* run the `rclone` command to upload the plots to Google Drive
+  *  `rclone copy ambient_sound_analysis/img/broadband.png mydrive:rclone_uploads/`
+
+  
+ ![alt txt](https://raw.githubusercontent.com/uwescience/SciPy2024-GitHubActionsTutorial/main/img/rclone_upload.png)
+ 
+[Secrets Documentation](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions)
 
 
 
