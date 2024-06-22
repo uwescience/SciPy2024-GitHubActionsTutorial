@@ -1,12 +1,12 @@
-name: Ambient Sound Processing
+name: Test Rclone
 
 on:
   # To run manually
   workflow_dispatch:
-  push: 
-    branches:
-     - main
-     - exporting_results
+#  push: 
+#    branches:
+#     - main
+#     - exporting_results
   
   # schedule:
   #  - cron: '9 * * * *'
