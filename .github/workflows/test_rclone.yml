@@ -1,0 +1,26 @@
+name: Test Rclone
+
+on:
+  # To run manually
+  workflow_dispatch:
+#  push: 
+#    branches:
+#     - main
+#     - exporting_results
+  
+  # schedule:
+  #  - cron: '9 * * * *'
+    
+jobs:
+  process:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Upload to Google Drive
+      uses: AnimMouse/setup-rclone@v1
+      with:
+        rclone_config: ${{secrets.RCLONE_CONFIG}}
+      
+    - run: |
+        rclone copy ambient_sound_analysis/img/broadband.png mydrive:rclone_uploads/
