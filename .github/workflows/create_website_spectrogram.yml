@@ -58,7 +58,7 @@ jobs:
   # Publish Website to GitHub Pages if built successfully
   deploy:
     needs: build
-    if: github.ref == 'refs/heads/spectrogram_website'
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
