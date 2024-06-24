@@ -1,4 +1,4 @@
-# Scheduled Deployment Workflow
+# Scheduled Algorithm Deployment Workflow
 
 ## Use Case: Orcasound Stream Spectrogram Visualization
 
