@@ -28,14 +28,14 @@ jobs:
         pip install -r ambient_sound_analysis/requirements_noise.txt
 
  
-    # - name: Install ffmpeg
-    #  run: |
-    #    sudo apt-get update
-    #    sudo apt-get install ffmpeg
+    - name: Install ffmpeg
+     run: |
+       sudo apt-get update
+       sudo apt-get install ffmpeg
     
-    - uses: awalsh128/cache-apt-pkgs-action@latest
-      with:
-        packages: ffmpeg
+    #- uses: awalsh128/cache-apt-pkgs-action@latest
+    #  with:
+    #    packages: ffmpeg
 
     - name: Create plots
       if: steps.cache.outputs.cache-hit != 'true'
