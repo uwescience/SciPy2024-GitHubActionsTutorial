@@ -4,7 +4,20 @@
 2. [GitHub Actions Python Environment](#github-actions-python-environment-workflow)
 3. [Orcasound Spectrogram Visualization Workflow](#orcasound-spectrogram-visualization-workflow)
 4. [Exporting Results](#exporting-results)
-5. [Scaling Workflows](#scaling-workflows)
+5. [Visualizing Results on a Webpage](#visualizing-results-on-a-webpage) 
+6. [Scaling Workflows](#scaling-workflows)
+
+All workflow configurations are stored in the [`.github/workflows`](https://github.com/uwescience/SciPy2024-GitHubActionsTutorial/tree/main/.github/workflows) and will go through them in the following order:
+
+1. [`python_env.yml`](https://github.com/uwescience/SciPy2024-GitHubActionsTutorial/blob/main/.github/workflows/python_env.yml)
+2. [`conda_env.yml`](https://github.com/uwescience/SciPy2024-GitHubActionsTutorial/blob/main/.github/workflows/conda_env.yml)
+3. [`noise_processing.yml`](https://github.com/uwescience/SciPy2024-GitHubActionsTutorial/blob/main/.github/workflows/noise_processing.yml)
+4. [`create_website_spectrogram.yml`](https://github.com/uwescience/SciPy2024-GitHubActionsTutorial/blob/main/.github/workflows/create_website_spectrogram.yml)
+5. [`create_website.yml`](https://github.com/uwescience/SciPy2024-GitHubActionsTutorial/blob/main/.github/workflows/create_website.yml)
+6. ...
+
+
+
 
 # Setup 
 * Fork this repo
@@ -67,7 +80,7 @@ We will discuss several different ways to export results.
 
 One of the easiest ways to display results is to store them in the GitHub repository. This can be a quick solution, for example, to display a small plot or a table within the `Readme.md` of the repository and update it as the workflow is rerun. This is not a practical solution for big outputs as the GitHub repositories are recommended to not exceed more than 1GB, and all versions of the files will be preserved in the repository's history (thus slowing down cloning). 
 
-It is possible to execute all steps to add, commit, and push a file to GitHub, but there is already an [GitHub Auto Commit Action]https://github.com/marketplace/actions/git-auto-commit) to achieve that.
+It is possible to execute all steps to add, commit, and push a file to GitHub, but there is already an [GitHub Auto Commit Action](https://github.com/marketplace/actions/git-auto-commit) to achieve that.
 
 ![alt text](https://raw.githubusercontent.com/uwescience/SciPy2024-GitHubActionsTutorial/main/img/auto-commit-action.png)
 
