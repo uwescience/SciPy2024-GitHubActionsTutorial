@@ -8,5 +8,5 @@ chapters:
 - file: python-environment-workflow
 - file: scheduled-algorithm-deployment
 - file: caching
-- file: exporting_results
-- file: visualizing_results_webpage
+- file: exporting-results
+- file: visualizing-results-webpage
