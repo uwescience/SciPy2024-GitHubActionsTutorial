@@ -21,6 +21,7 @@ jobs:
       with:
         python-version: '3.9.18'
         cache: 'pip'
+        cache_dependency_path: ambient_sound_analysis/requirements_noise.txt
 
     - name: Install Python dependencies
       run: |
