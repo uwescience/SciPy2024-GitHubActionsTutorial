@@ -20,18 +20,21 @@ jobs:
     - uses: actions/setup-python@v5
       with:
         python-version: '3.9.18'
+        cache: 'pip'
 
     - name: Install Python dependencies
       run: |
-        python -m pip install -U pip
-        python -m pip install -U setuptools wheel
-        python -m pip install -r ambient_sound_analysis/requirements_noise.txt
+        pip install -r ambient_sound_analysis/requirements_noise.txt
 
  
-    - name: Install ffmpeg
-      run: |
-        sudo apt-get update
-        sudo apt-get install ffmpeg
+    # - name: Install ffmpeg
+    #  run: |
+    #    sudo apt-get update
+    #    sudo apt-get install ffmpeg
+    
+    - uses: awalsh128/cache-apt-pkgs-action@latest
+      with:
+        packages: ffmpeg
 
     - name: Create plots
       if: steps.cache.outputs.cache-hit != 'true'
