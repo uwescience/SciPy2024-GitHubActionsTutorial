@@ -1,11 +1,10 @@
-# Overview
+# Setup
+* Fork this repo
+* Enable Github Actions:
+  * Settings ->   Actions -> Allow actions and reusable workflows
+  * [Managing Permissions 
+Documentation](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository)
 
-1. [Setup](#setup)
-2. [GitHub Actions Python Environment](#github-actions-python-environment-workflow)
-3. [Orcasound Spectrogram Visualization Workflow](#orcasound-spectrogram-visualization-workflow)
-4. [Exporting Results](#exporting-results)
-5. [Visualizing Results on a Webpage](#visualizing-results-on-a-webpage) 
-6. [Scaling Workflows](#scaling-workflows)
 
 All workflow configurations are stored in the [`.github/workflows`](https://github.com/uwescience/SciPy2024-GitHubActionsTutorial/tree/main/.github/workflows) and will go through them in the following order:
 
@@ -15,17 +14,6 @@ All workflow configurations are stored in the [`.github/workflows`](https://gith
 4. [`create_website_spectrogram.yml`](https://github.com/uwescience/SciPy2024-GitHubActionsTutorial/blob/main/.github/workflows/create_website_spectrogram.yml)
 5. [`create_website.yml`](https://github.com/uwescience/SciPy2024-GitHubActionsTutorial/blob/main/.github/workflows/create_website.yml)
 6. ...
-
-
-
-
-# Setup 
-* Fork this repo
-* Enable Github Actions:
-  * Settings ->   Actions -> Allow actions and reusable workflows
-  * [Managing Permissions Documentation](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#managing-github-actions-permissions-for-your-repository) 
-
-
 
  
 
