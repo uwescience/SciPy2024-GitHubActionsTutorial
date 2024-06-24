@@ -4,7 +4,20 @@
 2. [GitHub Actions Python Environment](#github-actions-python-environment-workflow)
 3. [Orcasound Spectrogram Visualization Workflow](#orcasound-spectrogram-visualization-workflow)
 4. [Exporting Results](#exporting-results)
-5. [Scaling Workflows](#scaling-workflows)
+5. [Visualizing Results on a Webpage](#visualizing-results-on-a-webpage) 
+6. [Scaling Workflows](#scaling-workflows)
+
+All workflow configurations are stored in the [`.github/workflows`](https://github.com/uwescience/SciPy2024-GitHubActionsTutorial/tree/main/.github/workflows) and will go through them in the following order:
+
+1. [`python_env.yml`](https://github.com/uwescience/SciPy2024-GitHubActionsTutorial/blob/main/.github/workflows/python_env.yml)
+2. [`conda_env.yml`](https://github.com/uwescience/SciPy2024-GitHubActionsTutorial/blob/main/.github/workflows/conda_env.yml)
+3. [`noise_processing.yml`](https://github.com/uwescience/SciPy2024-GitHubActionsTutorial/blob/main/.github/workflows/noise_processing.yml)
+4. [`create_website_spectrogram.yml`](https://github.com/uwescience/SciPy2024-GitHubActionsTutorial/blob/main/.github/workflows/create_website_spectrogram.yml)
+5. [`create_website.yml`](https://github.com/uwescience/SciPy2024-GitHubActionsTutorial/blob/main/.github/workflows/create_website.yml)
+6. ...
+
+
+
 
 # Setup 
 * Fork this repo
@@ -58,6 +71,51 @@ After the workflow is executed `psd.png` and `broadband.png`files are updated in
 
 ![alt text](https://raw.githubusercontent.com/uwescience/SciPy2024-GitHubActionsTutorial/main/ambient_sound_analysis/img/broadband.png)
 
+# Caching 
+
+Dependency reinstalls between consecutive workflow runs are time consuming, and usually unnecessary. The process can be sped up by caching the builds of the packages. Caches are removed automatically if not accessed for 7 days, and their size can be up to 10GB. One can also manually remove a cache, if they want to reset the installation.
+
+## Caching `pip` installs
+
+`pip` packages can be cached by adding the `cache: 'pip'` setting to the Python setup action. If one is not using the default `requirements.txt` file for installation, they should also provide a `dependency-path`.
+
+![alt text](https://raw.githubusercontent.com/uwescience/SciPy2024-GitHubActionsTutorial/main/img/pip-caching.png)
+
+## Caching `conda` installs
+
+Conda packages can be similarly cached withing the conda setup action.
+
+![alt text](https://raw.githubusercontent.com/uwescience/SciPy2024-GitHubActionsTutorial/main/img/conda-caching.png)
+
+## Caching `apt-get` installs
+
+Packages such as `ffmpeg` can take long time to install. There is no official action to cache apt-get packages but they can be cached with the [walsh128/cache-apt-pkgs-action](https://github.com/marketplace/actions/cache-apt-packages).
+
+```yaml
+- uses: walsh128/cache-apt-pkgs-action@latest
+  with:
+  packages: ffmpeg
+```
+
+## Caching any data
+
+The general [`cache`](https://github.com/marketplace/actions/cache) action allows to cache data at any path. Apart from builds of packages, one can use this option to not regenerate results while testing.
+
+```yaml
+- uses: actions/cache@v4
+  id: cache
+  with:
+    path: img/
+    key: img
+
+- name: Get all files
+  if: steps.cache.outputs.cache-hit != 'true'
+  run: …
+```
+
+[Caching Documentation](https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows)
+
+ 
 
 # Exporting Results
 
@@ -67,7 +125,7 @@ We will discuss several different ways to export results.
 
 One of the easiest ways to display results is to store them in the GitHub repository. This can be a quick solution, for example, to display a small plot or a table within the `Readme.md` of the repository and update it as the workflow is rerun. This is not a practical solution for big outputs as the GitHub repositories are recommended to not exceed more than 1GB, and all versions of the files will be preserved in the repository's history (thus slowing down cloning). 
 
-It is possible to execute all steps to add, commit, and push a file to GitHub, but there is already an [GitHub Auto Commit Action]https://github.com/marketplace/actions/git-auto-commit) to achieve that.
+It is possible to execute all steps to add, commit, and push a file to GitHub, but there is already an [GitHub Auto Commit Action](https://github.com/marketplace/actions/git-auto-commit) to achieve that.
 
 ![alt text](https://raw.githubusercontent.com/uwescience/SciPy2024-GitHubActionsTutorial/main/img/auto-commit-action.png)
 
