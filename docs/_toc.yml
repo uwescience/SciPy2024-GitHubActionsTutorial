@@ -4,4 +4,11 @@
 format: jb-book
 root: intro
 chapters:
-- file: lesson
+- file: getting-started
+- file: python-environment-workflow
+- file: scheduled-algorithm-deployment-workflow
+- file: caching
+- file: exporting-results
+- file: visualizing-results-webpage
+- file: ../glacier_image_correlation/README
+  title: Batch Computing
