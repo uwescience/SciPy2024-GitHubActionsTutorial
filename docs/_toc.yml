@@ -10,5 +10,5 @@ chapters:
 - file: caching
 - file: exporting-results
 - file: visualizing-results-webpage
-- file: ../glacier_image_correlation/README.md
+- file: ../glacier_image_correlation/README
   title: Batch Computing
