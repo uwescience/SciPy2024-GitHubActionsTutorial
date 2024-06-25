@@ -28,7 +28,7 @@ if __name__ == '__main__':
 # now = dt.datetime.now(pytz.timezone('US/Pacific'))
 # fix time
 now = dt.datetime(2024, 6, 1, 17, 0, 0)
-psd_path, broadband_path = pipeline.generate_parquet_file(now - dt.timedelta(hours = 13), 
+psd_path, broadband_path = pipeline.generate_parquet_file(now - dt.timedelta(hours = 9), 
                                                           now - dt.timedelta(hours = 8), 
                                                           upload_to_s3=False)
 
@@ -47,7 +47,7 @@ nof_ships = (np.diff((bb_df['0']>threshold).astype('uint8'))==1).sum()
 if not os.path.exists('ambient_sound_analysis/csv'):
    os.makedirs('ambient_sound_analysis/csv')
 
-pd.DataFrame([nof_ships]).to_csv(str(now)+'.csv', header=False, index=False)
+pd.DataFrame([nof_ships]).to_csv('ambient_sound_analysis/csv/'+str(now)+'.csv', header=False, index=False)
 
 
 
