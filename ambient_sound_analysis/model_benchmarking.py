@@ -47,7 +47,9 @@ nof_ships = (np.diff((bb_df['0']>threshold).astype('uint8'))==1).sum()
 if not os.path.exists('ambient_sound_analysis/csv'):
    os.makedirs('ambient_sound_analysis/csv')
 
-pd.DataFrame(nof_ships).to_csv('csv/'+str(now)+'.csv', header=False, index=False)
+pd.DataFrame([nof_ships]).to_csv(str(now)+'.csv', header=False, index=False)
+
+
 
 
 
