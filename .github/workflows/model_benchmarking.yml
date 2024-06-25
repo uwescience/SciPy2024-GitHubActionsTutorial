@@ -2,7 +2,7 @@ name: Model Benchmarking
 
 on:
   pull request:
-    types: ['opened']
+    types: ['opened','edited']
 
 env:
   pr_username: github.event.pull_request.user.login
