@@ -1,7 +1,7 @@
 name: Model Benchmarking
 on:
   pull_request:
-    types: ['opened','edited']
+    types: [opened, synchronized, edited, reopened]
 
 env:
   pr_username: github.event.pull_request.user.login
