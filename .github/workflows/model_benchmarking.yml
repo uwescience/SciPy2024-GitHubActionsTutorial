@@ -44,8 +44,8 @@ jobs:
 
 
     - name: Append username
-      run:|
-        sed 's/$/ $pr_username/' 'csv/2024-06-01 17:00:00.csv' > 'csv/2024-06-01 17:00:00_new.csv'
+      run: |
+        sed 's/$/ test/' 'ambient_sound_analysis/csv/2024-06-01 17:00:00.csv' > 'ambient_sound_analysis/csv/2024-06-01 17:00:00_new.csv'
 
     - name: Upload to GitHub repo
       uses: stefanzweifel/git-auto-commit-action@v5
