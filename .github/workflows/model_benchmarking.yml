@@ -1,5 +1,4 @@
 name: Model Benchmarking
-
 on:
   pull_request:
     types: ['opened','edited']
