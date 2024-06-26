@@ -12,3 +12,5 @@ chapters:
 - file: visualizing-results-webpage
 - file: ../glacier_image_correlation/README
   title: Batch Computing
+- file: model_benchmarking
+  title: Collaborative Model Versioning and Benchmarking
