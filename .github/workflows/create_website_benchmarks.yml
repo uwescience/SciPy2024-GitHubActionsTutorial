@@ -51,7 +51,7 @@ jobs:
   # Publish Website to GitHub Pages if built successfully
   deploy:
     needs: build
-    # if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/model_versioning'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
