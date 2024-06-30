@@ -47,13 +47,13 @@ jobs:
         # sed 's/$/ test trigger/' 'ambient_sound_analysis/csv/2024-06-01 17:00:00.csv' > 'ambient_sound_analysis/csv/2024-06-01 17:00:00_new.csv'
         
         export output_file="score_${{ github.event.pull_request.head.sha }}.csv"
-        sed 's/$/,  ${{ github.event.pull_request.user.login }}, ${{ github.event.pull_request.head.sha }}, $ {{github.event.pull_request.title}}/' 'ambient_sound_analysis/csv/test.csv' > "ambient_sound_analysis/csv/$output_file"
+        sed 's/$/,  ${{ github.event.pull_request.user.login }}, ${{ github.event.pull_request.head.sha }}, ${{github.event.pull_request.title}}/' 'ambient_sound_analysis/csv/test.csv' > "ambient_sound_analysis/csv/$output_file"
 
     - name: Upload to GitHub repo
       uses: stefanzweifel/git-auto-commit-action@v5
       with:
         commit_message: Commit to Github
-        file_pattern: 'ambient_sound_analysis/csv/*.csv'
+        file_pattern: 'ambient_sound_analysis/csv/score*.csv'
 
     #- name: Upload as artifact
     #  uses: actions/upload-artifact@v4
