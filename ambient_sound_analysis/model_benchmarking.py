@@ -28,7 +28,7 @@ if __name__ == '__main__':
 # now = dt.datetime.now(pytz.timezone('US/Pacific'))
 # fix time
 now = dt.datetime(2024, 6, 1, 17, 0, 0)
-psd_path, broadband_path = pipeline.generate_parquet_file(now - dt.timedelta(hours = 9), 
+psd_path, broadband_path = pipeline.generate_parquet_file(now - dt.timedelta(hours = 13), 
                                                           now - dt.timedelta(hours = 8), 
                                                           upload_to_s3=False)
 
