@@ -45,7 +45,9 @@ jobs:
     - name: Append username
       run: |
         # sed 's/$/ test trigger/' 'ambient_sound_analysis/csv/2024-06-01 17:00:00.csv' > 'ambient_sound_analysis/csv/2024-06-01 17:00:00_new.csv'
-        sed 's/$/  ${{ github.event.pull_request.user.login }}/' 'ambient_sound_analysis/csv/test.csv' > 'ambient_sound_analysis/csv/test_new.csv'
+        sed 's/$/  ${{ github.event.pull_request.user.login }} ${{github.event.pull_request.head.sha}}/' 
+'ambient_sound_analysis/csv/test.csv' > 
+'ambient_sound_analysis/csv/test_new.csv'
 
     - name: Upload to GitHub repo
       uses: stefanzweifel/git-auto-commit-action@v5
