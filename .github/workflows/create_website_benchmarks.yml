@@ -1,4 +1,4 @@
-name: Deploy Spectrogram Website to GitHub Pages
+name: Create Benchmark Website  
 
 on:
   # Runs on pushes targeting the default branch
