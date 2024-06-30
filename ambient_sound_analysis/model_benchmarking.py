@@ -49,6 +49,7 @@ if not os.path.exists('ambient_sound_analysis/csv'):
 
 # pd.DataFrame([nof_ships]).to_csv('ambient_sound_analysis/csv/'+str(now)+'.csv', header=False, index=False)
 
+print("Nof Ships: "+str(nof_ships))
 pd.DataFrame([nof_ships]).to_csv('ambient_sound_analysis/csv/test.csv', header=False, index=False)
 
 
