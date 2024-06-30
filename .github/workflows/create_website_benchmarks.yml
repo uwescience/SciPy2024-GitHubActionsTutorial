@@ -32,7 +32,7 @@ jobs:
 
       - name: Install Python dependencies
         run: |
-          pip install dask
+          pip install "dask[dataframe]"
           pip install ipykernel
           pip install nbconvert
 
