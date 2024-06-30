@@ -46,9 +46,8 @@ jobs:
       run: |
         # sed 's/$/ test trigger/' 'ambient_sound_analysis/csv/2024-06-01 17:00:00.csv' > 'ambient_sound_analysis/csv/2024-06-01 17:00:00_new.csv'
         
-        output_file = "score_${{ github.event.pull_request.head.sha }}.csv"
-        sed 's/$/,  ${{ github.event.pull_request.user.login }}, ${{ github.event.pull_request.head.sha }}, $ {{github.event.pull_request.title}}/' 'ambient_sound_analysis/csv/test.csv' > 
-"ambient_sound_analysis/csv/$output_file"
+        export output_file = "score_${{ github.event.pull_request.head.sha }}.csv"
+        sed 's/$/,  ${{ github.event.pull_request.user.login }}, ${{ github.event.pull_request.head.sha }}, $ {{github.event.pull_request.title}}/' 'ambient_sound_analysis/csv/test.csv' > "ambient_sound_analysis/csv/$output_file"
 
     - name: Upload to GitHub repo
       uses: stefanzweifel/git-auto-commit-action@v5
