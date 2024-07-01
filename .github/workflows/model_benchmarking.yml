@@ -1,0 +1,70 @@
+name: Model Benchmarking
+on:
+  pull_request:
+    types: [opened, synchronize, edited, reopened]
+
+env:
+  pr_username: github.event.pull_request.user.login
+  
+  # schedule:
+  #  - cron: '9 * * * *'
+    
+jobs:
+  process:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.9.18'
+        cache: 'pip'
+        cache-dependency-path: ambient_sound_analysis/requirements_noise.txt
+
+    - name: Install Python dependencies
+      run: |
+        pip install -r ambient_sound_analysis/requirements_noise.txt
+
+ 
+    # - name: Install ffmpeg
+    #  run: |
+    #   sudo apt-get update
+    #   sudo apt-get install ffmpeg
+    
+    - uses: awalsh128/cache-apt-pkgs-action@latest
+      with:
+        packages: ffmpeg
+
+    - name: Create plots
+      if: steps.cache.outputs.cache-hit != 'true'
+      run: |
+        python ambient_sound_analysis/model_benchmarking.py
+
+
+
+    - name: Append username
+      run: |
+        # sed 's/$/ test trigger/' 'ambient_sound_analysis/csv/2024-06-01 17:00:00.csv' > 'ambient_sound_analysis/csv/2024-06-01 17:00:00_new.csv'
+        
+        export output_file="score_${{ github.event.pull_request.head.sha }}.csv"
+        sed 's/$/,  ${{ github.event.pull_request.user.login }}, ${{ github.event.pull_request.head.sha }}, ${{github.event.pull_request.title}}/' 'ambient_sound_analysis/csv/test.csv' > "ambient_sound_analysis/csv/$output_file"
+
+    - name: Upload to GitHub repo
+      uses: stefanzweifel/git-auto-commit-action@v5
+      with:
+        commit_message: Commit to Github
+        file_pattern: 'ambient_sound_analysis/csv/score*.csv'
+
+    #- name: Upload as artifact
+    #  uses: actions/upload-artifact@v4
+    # with:
+    #     name: ambient_sound_plots
+    #     path: ambient_sound_analysis/img/*.png
+
+    #- name: Upload to Google Drive
+    #  uses: AnimMouse/setup-rclone@v1
+    #  with:
+    #    rclone_config: ${{secrets.RCLONE_CONFIG}}
+      
+    # - run: |
+    #    rclone copy ambient_sound_analysis/img/broadband.png mydrive:rclone_uploads/
