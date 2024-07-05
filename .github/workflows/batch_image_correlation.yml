@@ -28,29 +28,13 @@ on:
             description: number of pairs per image
             default: '1'
             options: ['3','2','1']
-
-  # Must duplicate inputs for workflow_call (https://github.com/orgs/community/discussions/39357)
-  workflow_call:
-    inputs:
-      cloud_cover:
-        type: string
-        required: true
-      start_month:
-        type: string
-        required: true
-      stop_month:
-        type: string
-        required: true
-      npairs:
-        type: string
-        required: true
-
+            
 jobs:
   # The output of this job is a JSON mapping for a matrix job
   S2_search:
     runs-on: ubuntu-latest
     outputs:
-      BURST_IDS: ${{ steps.S2_search.outputs.IMAGE_DATES }}
+      IMG_IDS: ${{ steps.S2_search.outputs.IMAGE_DATES }}
       MATRIX: ${{ steps.S2_search.outputs.MATRIX_PARAMS_COMBINATIONS }}
     defaults:
       run:
@@ -65,7 +49,7 @@ jobs:
           cache-environment: true
           environment-file: glacier_image_correlation/environment.yml
 
-      - name: Search aws for S2 imagery
+      - name: Search aws for S2 Imagery
         id: S2_search
         run: | 
           python glacier_image_correlation/s2_search.py ${{ inputs.cloud_cover }} ${{ inputs.start_month }} ${{ inputs.stop_month }} ${{ inputs.npairs }}
