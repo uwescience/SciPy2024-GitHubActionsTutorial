@@ -25,17 +25,17 @@ jobs:
                 environment-file: glacier_image_correlation/environment.yml
                 environment-name: image-correlation
 
-            - name: Download Artifacts
+            - name: Download Velocity Map Artifacts
               uses: actions/download-artifact@v4
               with:
                   path: glacier_image_correlation/
                   merge-multiple: true
                 
-            - name: Compute summary statistics
+            - name: Compute Summary Statistics
               run: |
                 python glacier_image_correlation/summary_statistics.py
 
-            - name: Upload summary statistics
+            - name: Upload Summary Statistics Figure as Artifact
               uses: actions/upload-artifact@v4
               with:
                 name: summary_statistics
