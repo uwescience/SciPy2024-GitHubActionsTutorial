@@ -54,16 +54,17 @@ jobs:
                 environment-file: glacier_image_correlation/environment.yml
                 environment-name: image-correlation
 
-            - name: modify autoRIFT package
+            - name: Modify autoRIFT Package
+            # current release has deprecated numpy functions https://github.com/nasa-jpl/autoRIFT/issues/97
               run: |
                 git clone https://github.com/gbrencher/autoRIFT.git
                 cp -f autoRIFT/geo_autoRIFT/autoRIFT/autoRIFT.py /home/runner/micromamba/envs/image-correlation/lib/python3.12/site-packages/autoRIFT/
                 
-            - name: download data and run autoRIFT software
+            - name: Download Data and Run autoRIFT Software
               run: |
                 python glacier_image_correlation/image_correlation.py ${{ inputs.img1_product_name }} ${{ inputs.img2_product_name }}
 
-            - name: Upload velocity 
+            - name: Upload Velocity Map as Artifact
               uses: actions/upload-artifact@v4
               with:
                 name: ${{ inputs.workflow_name }}
