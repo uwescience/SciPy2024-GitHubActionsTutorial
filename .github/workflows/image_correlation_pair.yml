@@ -52,7 +52,6 @@ jobs:
               with:
                 cache-environment: true
                 environment-file: glacier_image_correlation/environment.yml
-                environment-name: image-correlation
 
             - name: Modify autoRIFT Package
             # current release has deprecated numpy functions https://github.com/nasa-jpl/autoRIFT/issues/97
