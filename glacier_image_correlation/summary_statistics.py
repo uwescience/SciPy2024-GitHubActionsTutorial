@@ -65,7 +65,7 @@ def main():
     sns.set_theme()
     f, ax = plt.subplots(1, 3, figsize=(15, 5), sharex=True, sharey=True)
     veloc_da_median.plot(ax=ax[0], vmin=0, vmax=600, cmap='inferno', cbar_kwargs= {'shrink':0.7, 'label':'velocity (m/yr)'})
-    veloc_da_stdev.plot(ax=ax[1], vmin=0, vmax=300, cmap='cividis', cbar_kwargs= {'shrink':0.7, 'label':'standard deviation (m/yr)'})
+    veloc_da_stdev.plot(ax=ax[1], vmin=0, vmax=600, cmap='cividis', cbar_kwargs= {'shrink':0.7, 'label':'standard deviation (m/yr)'})
     veloc_da_count.plot(ax=ax[2], vmin=0, cmap='Blues', cbar_kwargs= {'shrink':0.7, 'label':'pixel count'})
     ax[0].set_aspect('equal')
     ax[1].set_aspect('equal')
