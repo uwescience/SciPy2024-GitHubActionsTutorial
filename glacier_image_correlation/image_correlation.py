@@ -25,11 +25,6 @@ def download_s2(img1_product_name, img2_product_name, bbox):
     '''
     Download a pair of Sentinel-2 images acquired on given dates over a given bounding box
     '''
-    # GDAL environment variables for better performance
-    os.environ['AWS_REGION']='us-west-2'
-    os.environ['GDAL_DISABLE_READDIR_ON_OPEN']='EMPTY_DIR' 
-    os.environ['AWS_NO_SIGN_REQUEST']='YES' 
-
     # We use the api from element84 to query the data
     URL = "https://earth-search.aws.element84.com/v1"
     catalog = pystac_client.Client.open(URL)
