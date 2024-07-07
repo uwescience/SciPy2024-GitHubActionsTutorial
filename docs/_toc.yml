@@ -10,7 +10,7 @@ chapters:
 - file: caching
 - file: exporting-results
 - file: visualizing-results-webpage
-- file: ../glacier_image_correlation/README
-  title: Batch Computing
+- file: batch-computing
+  title: Scaling Workflows
 - file: model_benchmarking
   title: Collaborative Model Versioning and Benchmarking
