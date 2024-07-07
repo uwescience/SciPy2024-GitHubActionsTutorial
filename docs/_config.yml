@@ -1,7 +1,7 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: GitHub Actions for Scientific Workflows (SciPy 2024)
+title: GitHub Actions for Scientific Data Workflows (SciPy 2024)
 author: Valentina Staneva, George (Quinn) Brencher, Scott Henderson
 logo: logo.png
 

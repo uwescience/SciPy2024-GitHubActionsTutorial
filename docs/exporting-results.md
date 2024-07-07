@@ -32,14 +32,12 @@ gh run download
 
 The workflow run also provides a publicly available link to the download artifact:
 
-Artifact download URL: [https://github.com/uwescience/SciPy2024-
-GitHubActionsTutorial/actions/runs/9591972369/artifacts/1619380017](https://github.com/uwescience/SciPy2024-
+Artifact download URL: [`https://github.com/uwescience/SciPy2024-GitHubActionsTutorial/actions/runs/9591972369/artifacts/1619380017`](https://github.com/uwescience/SciPy2024-
 GitHubActionsTutorial/actions/runs/9591972369/artifacts/1619380017)
 
-There is a `download-artifact` action to download the artifacts and share between jobs within a workflow run (note this is limited to the inidividual workflow run, for downloading across runs use the other options).
+There is a `download-artifact` action to download the artifacts and share between jobs within a workflow run (note this is limited to the individual workflow run, for downloading across runs use the other options).
 
-[Here](Artifact download URL: https://github.com/uwescience/SciPy2024-
-GitHubActionsTutorial/actions/runs/9591972369/artifacts/1619380017) is more detailed documentation on GitHub Artifacts.
+[Here](https://docs.github.com/en/actions/using-workflows/storing-workflow-data-as-artifacts) you can find more detailed documentation on GitHub Artifacts.
 
 
 
@@ -55,7 +53,7 @@ The approach consists of a few steps:
   *  we will use [AnimMouse/setup-rclone](https://github.com/marketplace/actions/setup-rclone-action)
 * configure a Google Drive remote locally
 * encode the text in the config file and save it as a secret `RCLONE_CONFIG`
-  * MacOX: `openssl base64 -in ~/.config/rclone/rclone_drive.conf`
+  * `openssl base64 -in ~/.config/rclone/rclone_drive.conf`
 * run the `rclone` command to upload the plots to Google Drive
   *  `rclone copy ambient_sound_analysis/img/broadband.png mydrive:rclone_uploads/`
 
