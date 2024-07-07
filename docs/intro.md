@@ -36,11 +36,11 @@ Participants can make edits from the GitHub interface, but if they are willing t
 
 ## Outline
 
-## Short Version
+### Short Version
 ```{tableofcontents}
 ```
 
-## Long Version (with approximate schedule)
+### Long Version (with approximate schedule)
 * Overview of GitHub Actions and Workflows and their popular uses in Python software development (examples of testing, listing, 
 packaging)(20 min)
 	* We will explain the main components of GitHub Actions and associated terminology
