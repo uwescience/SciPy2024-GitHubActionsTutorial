@@ -16,7 +16,7 @@ This set of Github Actions workflows allows you to measure horizontal glacier su
 ## Usage
 We use three workflows to batch process image pairs for glacier surface velocity. For demonstration purposes the workflows are only set up to work over the [Yazghil Glacier](https://earth.google.com/earth/d/1myewNJrDEM0tW1_xdpWCYaRCGDcOBwiy?usp=drive_link) in Pakistan. To run the workflows, simply fork this repository, visit the "Actions" tab, and choose the `batch_image_correlation` workflow (which runs the other two workflows as well). 
 
-![plot](./images/workflow_diagram.png)
+![plot](https://github.com/uwescience/SciPy2024-GitHubActionsTutorial/blob/main/glacier_image_correlation/images/workflow_diagram.png)
 
 ### 1. `image_correlation_pair`
 This workflow calls a Python script (image_correlation.py) that runs autoRIFT on a pair of spatially overlapping [Sentinel-2 L2A](https://docs.sentinel-hub.com/api/latest/data/sentinel-2-l2a/) images. It requires the [product names](https://sentiwiki.copernicus.eu/web/s2-products) of the two images. The images are downloaded from aws using the [Element 84 Earth Search API](https://element84.com/earth-search/). Only the near infrared band (NIR, B08) is used which has a spatial resolution of 10 m. autoRIFT is used to perform image correlation. Search distances are scaled with temporal baseline assuming a maximum surface velocity of 1000 m/yr, so images acquired farther apart in time take longer to process. Surface velocity maps are saved as geotifs and uploaded as [Github Artifacts](https://docs.github.com/en/actions/using-workflows/storing-workflow-data-as-artifacts). 
