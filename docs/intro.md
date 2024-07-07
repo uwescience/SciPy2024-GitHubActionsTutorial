@@ -1,4 +1,4 @@
-# Welcome to GitHub Actions for Scientific Workflows
+# Welcome to GitHub Actions for Scientific Data Workflows
 
 
 Tutorial presented at [SciPy 2024 Conference](https://www.scipy2024.scipy.org/)
@@ -97,6 +97,7 @@ Project, 2024, [[repo](https://github.com/relativeorbit/actions-batch-demo)]
 * [*GitHub Actions Workflows for Scheduled Algorithm 
 Deployment*](https://summerofcode.withgoogle.com/archive/2021/projects/5026942771789824), Dmitry Volodin, Jesse Lopez, Scott Veirs, Val 
 Veirs, Valentina Staneva, Orcasound Google Summer Of Code 2021 Project, [[repo]](https://github.com/orcasound/orca-action-workflow)
+* [*GitHub Actions Documentation*](https://docs.github.com/en/actions/learn-github-actions)
 
 
 
