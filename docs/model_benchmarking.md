@@ -20,6 +20,18 @@ The workflow which triggers the model evaluation is in [`model_benchmarking.yml`
 
 The next workflow follows the steps `create_website_spectrogram` workflow, which converts a notebook [`display_benchmarks`](https://github.com/uwescience/SciPy2024-GitHubActionsTutorial/blob/main/ambient_sound_analysis/display_benchmarks.ipynb) to a website. In this case, we have a very simple notebook which reads all `score_[SHA].csv` and displays a "benchmark table" with the individual entries. This notebook is converted to a webpage ([https://uwescience.github.io/SciPy2024-GitHubActionsTutorial/display_benchmarks.html](https://uwescience.github.io/SciPy2024-GitHubActionsTutorial/display_benchmarks.html/)).
 
+### Exercise
+
+Create a branch and update the `model_versioning.py` file with a different threshold
+
+```
+# set threshold
+threshold = ??
+```
+
+Submit a pull request from this branch to main and monitor the execution of the workflows. Check out the generated website at [https://uwescience.github.io/SciPy2024-GitHubActionsTutorial/display_benchmarks.html](https://uwescience.github.io/SciPy2024-GitHubActionsTutorial/display_benchmarks.html/).
+
+
 
 
 
