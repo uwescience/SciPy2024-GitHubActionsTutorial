@@ -16,5 +16,5 @@ jobs:
 
     - name: Hello World 
       run: |
-        python -c "import numpy as sp; print('Numpy version: '+np.__version__)"
+        python -c "import numpy as np; print('Numpy version: '+np.__version__)"
         python -c "import matplotlib as mpl; print('Matplotlib version: '+mpl.__version__)"
