@@ -2,8 +2,8 @@ name: Create Benchmark Website
 
 on:
   # Runs on pushes targeting the default branch
-  push:
-    branches: ["main", "model_versioning"]
+  # push:
+  #  branches: ["main", "model_versioning"]
   pull_request:
     types: ["opened", "reopened", "synchronize", "edited"]
 
