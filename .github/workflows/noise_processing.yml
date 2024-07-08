@@ -8,7 +8,7 @@ on:
   #   - main
   #   - caching
   schedule:
-    - cron: '51 14 8 7 *'
+    - cron: '51 21 8 7 *'
     
 jobs:
   process:
