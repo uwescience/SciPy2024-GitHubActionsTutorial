@@ -46,7 +46,7 @@ jobs:
       uses: stefanzweifel/git-auto-commit-action@v5
       with:
           commit_message: Commit to Github
-          file_pattern: 'ambient_sound_analysis/img/*.png'
+          file_pattern: 'ambient_sound_analysis/img/broadband.png'
 
    # - name: Upload as artifact
    #   uses: actions/upload-artifact@v4
