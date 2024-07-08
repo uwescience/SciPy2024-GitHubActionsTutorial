@@ -37,7 +37,7 @@ psd_path, broadband_path = pipeline.generate_parquet_file(now - dt.timedelta(hou
 bb_df = pd.read_parquet(broadband_path)
 
 # set threshold
-threshold = 5
+threshold = 4
 
 import numpy as np
 nof_ships = (np.diff((bb_df['0']>threshold).astype('uint8'))==1).sum()
