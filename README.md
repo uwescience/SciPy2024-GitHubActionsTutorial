@@ -67,6 +67,7 @@ Outline:
 	* we will have a discussion on potential uses of Github Actions within the work of the participants
 
 # References
+* [Tutorial Slides](https://docs.google.com/presentation/d/1I6J74cL8sWYFsmcHq5NZIaDXaxR9SjDabJTXD7UgVpw/)
 * [*GitHub Actions for Scientific Data Workflows*](https://github.com/valentina-s/GithubActionsTutorial-USRSE23), Valentina Staneva, [US-RSE 2023 Tutorial](https://us-rse.org/usrse23/program/tutorials/) 
 * [*Characterizing glacial lake outburst flood hazard at regional scale using fused InSAR-speckle tracking surface displacement time series*](https://escience.washington.edu/2024-incubator-projects/), Quinn Brencher and Scott Henderson, eScience Institute Data Incubator Project, 2024, [[repo](https://github.com/relativeorbit/actions-batch-demo)]
 * [*GitHub Actions Workflows for Scheduled Algorithm Deployment*](https://summerofcode.withgoogle.com/archive/2021/projects/5026942771789824), Dmitry Volodin, Jesse Lopez, Scott Veirs, Val Veirs, Valentina Staneva, Orcasound Google Summer Of Code 2021 Project, [[repo]](https://github.com/orcasound/orca-action-workflow)
