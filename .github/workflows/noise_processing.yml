@@ -2,13 +2,13 @@ name: Ambient Sound Processing
 
 on:
   # To run manually
-  # workflow_dispatch:
-  # push: 
-  #  branches:
-  #   - main
-  #   - caching
-  schedule:
-    - cron: '51 21 8 7 *'
+  workflow_dispatch:
+  push: 
+    branches:
+     - main
+     - caching
+  #schedule:
+  #  - cron: '51 21 8 7 *'
     
 jobs:
   process:
@@ -32,9 +32,9 @@ jobs:
        sudo apt-get update
        sudo apt-get install ffmpeg
     
-    #- uses: awalsh128/cache-apt-pkgs-action@latest
-    #  with:
-    #    packages: ffmpeg
+    - uses: awalsh128/cache-apt-pkgs-action@latest
+      with:
+        packages: ffmpeg
 
     - name: Create plots
       if: steps.cache.outputs.cache-hit != 'true'
@@ -47,11 +47,11 @@ jobs:
           commit_message: Commit to Github
           file_pattern: 'ambient_sound_analysis/img/broadband.png'
 
-   # - name: Upload as artifact
-   #   uses: actions/upload-artifact@v4
-   #   with:
-   #     name: ambient_sound_plots
-   #     path: ambient_sound_analysis/img/*.png
+    - name: Upload as artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: ambient_sound_plots
+        path: ambient_sound_analysis/img/*.png
 
    # - name: Upload to Google Drive
    #   uses: AnimMouse/setup-rclone@v1
