@@ -11,10 +11,7 @@ build:
 
 python:
   install:
-    - method: pip
-      path: .
-      extra_requirements:
-      - sphinx
+    - requirements: requirements.txt
 
 sphinx:
   builder: html
