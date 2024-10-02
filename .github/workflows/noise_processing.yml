@@ -19,8 +19,8 @@ jobs:
     - uses: actions/setup-python@v5
       with:
         python-version: '3.9.18'
-        cache: 'pip'
-        cache-dependency-path: ambient_sound_analysis/requirements_noise.txt
+#        cache: 'pip'
+#        cache-dependency-path: ambient_sound_analysis/requirements_noise.txt
 
     - name: Install Python dependencies
       run: |
