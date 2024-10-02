@@ -25,7 +25,7 @@ jobs:
     - name: Install Python dependencies
       run: |
         pip install setuptools==71.0.4
-        pip install -r ambient_sound_analysis/requirements_noise.py
+        pip install -r ambient_sound_analysis/requirements_noise.txt
         # pip install orcasound_noise@git+https://github.com/orcasound/ambient-sound-analysis@ffmpeg-quiet
 
  
