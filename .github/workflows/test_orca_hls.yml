@@ -3,10 +3,10 @@ name: Test Ambient Sound Processing
 on:
   # To run manually
   workflow_dispatch:
-  # push: 
-    # branches:
-    #  - main
-    #  - caching
+  push: 
+    branches:
+      - turnoff-actions
+      
   #schedule:
   #  - cron: '51 21 8 7 *'
     
