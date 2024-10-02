@@ -1,3 +1,4 @@
+setuptools==70.0.0
 matplotlib 
 scipy 
 m3u8 
