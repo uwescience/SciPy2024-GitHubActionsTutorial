@@ -3,6 +3,7 @@ name: batch_image_correlation
 run-name: batch image correlation ${{ inputs.npairs }} connections
 
 on:
+push:
   workflow_dispatch:
     inputs:
         cloud_cover:
